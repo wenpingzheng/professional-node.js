@@ -1,0 +1,27 @@
+{
+  "name": "advancednode.js",
+  "version": "1.0.0",
+  "description": "##主讲人:止水",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardgong1987/professional-node.js.git"
+  },
+  "keywords": [],
+  "author": "ag_dubs <wombat@npmjs.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/richardgong1987/professional-node.js/issues"
+  },
+  "homepage": "https://github.com/richardgong1987/professional-node.js#readme",
+  "dependencies": {
+    "vue": "^2.0.1"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {
+    "jquery": "^3.1.1"
+  }
+}
