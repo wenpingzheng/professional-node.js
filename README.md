@@ -2,6 +2,7 @@
 
 ##主讲人:止水
 
+##https://github.com/richardgong1987/professional-node.js.git
 
 如有疑问可以通过以下方式找到我
 

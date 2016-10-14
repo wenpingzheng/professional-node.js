@@ -1,5 +1,7 @@
 #npm管理工具
 
+http://nodejs.org/
+
 ##0.Npm init
 
 ```
@@ -20,7 +22,7 @@ in the form of x.x.x
 For example:
 
 {
-  "name": "my-awesome-package",
+  "name": "myawesomepackage",
   "version": "1.0.0"
 }
 
@@ -31,6 +33,7 @@ set several config options for the init command. Some useful ones:
 > npm set init.author.email "wombat@npmjs.com"
 > npm set init.author.name "ag_dubs"
 > npm set init.license "MIT"
+> npm set init.version "1.0.0"
 
 
 
@@ -123,7 +126,7 @@ npm uninstall --save <package_name>
 
 npm uninstall --save-dev <package_name>
 
-npm install @username/project-name --save
+npm uninstall @username/project-name --save
 
 ```
 
