@@ -1,4 +1,10 @@
+
 #npm管理工具
+
+node.js入门到精通01，关于npm 01
+
+源码:https://github.com/richardgong1987/professional-node.js.git
+
 
 http://nodejs.org/
 
