@@ -6,17 +6,7 @@ node.js入门到精通01，关于npm 01
 源码:https://github.com/richardgong1987/professional-node.js.git
 
 
-http://nodejs.org/
-
-##0.Npm init
-
 ```
-npm init
- 
-or
-
-npm int --y(--yes)
-
 As a bare minimum, a package.json must have:
 
 "name"
@@ -31,6 +21,20 @@ For example:
   "name": "myawesomepackage",
   "version": "1.0.0"
 }
+
+
+```
+
+http://nodejs.org/
+
+##0.Npm init
+
+```
+npm init
+ 
+or
+
+npm int --y(--yes)
 
 
 
