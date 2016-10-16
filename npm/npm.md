@@ -47,6 +47,18 @@ For example:
 }
 
 
+=version Exactly matches version.
+>version Greater than version.
+>=version Greater than or equal to version.
+<version Less than version.
+<=version Less than or equal to version.
+~version Greater than or equal to version, but less than the next major version.
+* Newest version available.
+“” Newest version available.
+version1 – version2 Greater than or equal to version1, and less than or equal to version2.
+range1 || range2 Matches versions specified by either range1 and range2.
+
+
 ```
 
 http://nodejs.org/
@@ -119,7 +131,7 @@ npm outdated -g --depth=0 //To find out which packages need to be updated
 
 ##3.npm uninstall
 ```
-npm uninstall <package_name>
+npm uninstall <package_name> <package_name> <package_name>...
 
 npm uninstall <package_name> -g //Global packages can be uninstalled
 
@@ -128,6 +140,10 @@ npm uninstall --save <package_name>
 npm uninstall --save-dev <package_name>
 
 npm uninstall @username/project-name --save
+
+same with below:
+
+npm rm <package_name>
 
 ```
 
@@ -181,7 +197,7 @@ Type: Boolean
 Display full package descriptions and other long text across multiple lines. When disabled (default) search results are truncated to fit neatly on a single line. Modules with extremely long names will fall on multiple lines.
 ```
 
-##7.npm link
+##7.npm link,unlink
 
 ```
 npm link (in package dir)
@@ -189,6 +205,13 @@ npm link [<@scope>/]<pkg>[@<version>]
 
 alias: npm ln
 
+e.g:
+
+cd foo-module
+npm link
+
+cd bar-module
+npm link foo-module
 ```
 
 
@@ -214,10 +237,9 @@ Description
 This runs a package's "stop" script, if one was provided.
 ```
 
-##10. [DEPRECATED] npm tag <name>@<version> [<tag>] See `dist-tag`
 
 
-##11. npm view
+##10. npm view
 
 ```
 npm view [<@scope>/]<name>[@<version>] [<field>[.<subfield>]...]
@@ -230,5 +252,13 @@ Description
 This command shows data about a package and prints it to the stream referenced by the outfd config, which defaults to stdout.
 
 To show the package registry entry for the connect package, you can do this:
+
+
+
+##11. npm doc 
+
+
+
+
 
 
