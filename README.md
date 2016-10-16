@@ -8,9 +8,11 @@
 
 email:richardgong1988@gmail.com
 
-QQ:909253305
+facebook:909253305@qq.com
 
 微信:live1520
+
+
 
 
 

@@ -7,6 +7,8 @@ node.js入门到精通01，关于npm 01
 
 
 ```
+Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+
 As a bare minimum, a package.json must have:
 
 "name"
@@ -21,31 +23,6 @@ For example:
   "name": "myawesomepackage",
   "version": "1.0.0"
 }
-
-
-```
-
-http://nodejs.org/
-
-##0.Npm init
-
-```
-npm init
- 
-or
-
-npm int --y(--yes)
-
-
-
-set several config options for the init command. Some useful ones:
-
-> npm set init.author.email "wombat@npmjs.com"
-> npm set init.author.name "ag_dubs"
-> npm set init.license "MIT"
-> npm set init.version "1.0.0"
-
-
 
 
 {
@@ -69,12 +46,26 @@ set several config options for the init command. Some useful ones:
   "homepage": "https://github.com/richardgong1987/professional-node.js#readme"
 }
 
+
+```
+
+http://nodejs.org/
+
+##0.npm init
+
+```
+npm init
+ 
+or
+
+npm int --y(--yes)
+
 npm init --scope=username //you can add your scope as an option to that command
 
 
 ```
 
-##1.Updating 
+##1.npm install 
 ```
 npm install npm@latest -g
 
@@ -84,12 +75,6 @@ npm install -g jshint
 
 npm install  jshint
 
-```
-
-
-##2.Installing package
-
-```
 
 npm install <package_name>
 
@@ -109,13 +94,19 @@ npm install
 
 npm install @username/project-name --save
 
+@scope/project-name
+
+@username/project-name
+
+
 npm install http://www.github.com/richardgong/test
 
 ```
 
 
 
-##3.Updating  packages
+
+##2.npm update
 ```
 npm update -g //To update all global packages
 
@@ -126,7 +117,7 @@ npm outdated -g ////the new available global list
 npm outdated -g --depth=0 //To find out which packages need to be updated
 ```
 
-##4.Uninstalling  packages
+##3.npm uninstall
 ```
 npm uninstall <package_name>
 
@@ -140,7 +131,7 @@ npm uninstall @username/project-name --save
 
 ```
 
-##5.Publishing npm packages
+##4. npm publish
 
 ```
 npm adduser
@@ -161,32 +152,83 @@ npm publish --access=public // public scoped modules are free and don't require 
 
 ```
 
-##6. Working with scoped packages
+##5.npm bin 
 
 ```
-@scope/project-name
+Print the folder where npm will install executables.
+```
 
-@username/project-name
+##6.npm search 
+```
+npm search [-l|--long] [search terms ...]
 
-sudo npm install -g npm
-npm login
-
-
-npm init --scope=username
-If you use the same scope all the time, you will probably want to set this option in your .npmrc file.
+aliases: s, se
 
 
-npm publish --access=public
+Description
 
+Search the registry for packages matching the search terms.
+
+If a term starts with /, then it's interpreted as a regular expression. A trailing / will be ignored in this case. (Note that many regular expression characters must be escaped or quoted in most shells.)
+
+Configuration
+
+
+long
+
+Default: false
+Type: Boolean
+Display full package descriptions and other long text across multiple lines. When disabled (default) search results are truncated to fit neatly on a single line. Modules with extremely long names will fall on multiple lines.
+```
+
+##7.npm link
+
+```
+npm link (in package dir)
+npm link [<@scope>/]<pkg>[@<version>]
+
+alias: npm ln
 
 ```
 
-##7.Using dist-tags
+
+##8.npm start
+```
+npm start [-- <args>]
+```
+
+Description
+
+This runs an arbitrary command specified in the package's "start" property of its "scripts" object. If no "start" property is specified on the "scripts" object, it will run node server.js.
+
 
 ```
-npm dist-tag add <pkg>@<version> [<tag>]
+As of npm@2.0.0, you can use custom arguments when executing scripts. Refer to npm-run-script for more details.
+
+```
+##9.npm stop 
+
+```
+Description
+
+This runs a package's "stop" script, if one was provided.
 ```
 
-##What's the different between 'local' and 'global' modules
+##10. [DEPRECATED] npm tag <name>@<version> [<tag>] See `dist-tag`
+
+
+##11. npm view
+
+```
+npm view [<@scope>/]<name>[@<version>] [<field>[.<subfield>]...]
+    
+    aliases: info, show, v
+```
+
+Description
+
+This command shows data about a package and prints it to the stream referenced by the outfd config, which defaults to stdout.
+
+To show the package registry entry for the connect package, you can do this:
 
 
