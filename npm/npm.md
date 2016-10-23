@@ -1,7 +1,9 @@
 
 #npm管理工具
 
-node.js入门到精通01，关于npm 01
+node.js高级编程01.关于npm常用命令
+
+##关于npm常用命令
 
 源码:https://github.com/richardgong1987/professional-node.js.git
 
@@ -20,7 +22,7 @@ in the form of x.x.x
 For example:
 
 {
-  "name": "myawesomepackage",
+  "name": "myawesom/epackage",
   "version": "1.0.0"
 }
 

@@ -2,22 +2,26 @@
   "name": "advancednode.js",
   "version": "1.0.0",
   "description": "##主讲人:止水",
-  "main": "index.js",
+  "main": "executelinkfile.js",
   "dependencies": {
-    "vue": "^2.0.1"
+    "koa": "^1.2.4"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node executelinkfile.js",
+    "stop": "node executelinkfile.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/richardgong1987/professional-node.js.git"
   },
+  "keywords": [],
   "author": "ag_dubs <aaaaa@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/richardgong1987/professional-node.js/issues"
   },
-  "homepage": "https://github.com/richardgong1987/professional-node.js#readme"
+  "homepage": "https://github.com/richardgong1987/professional-node.js#readme",
+  "optionalDependencies": {}
 }
