@@ -4,6 +4,7 @@
 class EventEmitter {
     constructor() {
         this._events = {};
+
     }
 
     emit(type) {
@@ -20,6 +21,7 @@ class EventEmitter {
 
     addListener(type, fun) {
         this._events = this._events || {};
+
         if (!this._events[type]) {
             this._events[type] = [];
         }
@@ -31,7 +33,6 @@ class EventEmitter {
         this.addListener(type, _onceWrap(this, type, fun))
     }
 }
-
 
 function _onceWrap(target, type, listener) {
     var fired = false;
@@ -50,4 +51,7 @@ function _onceWrap(target, type, listener) {
 
 EventEmitter.prototype.on = EventEmitter.prototype.addListener;
 EventEmitter.EventEmitter = EventEmitter;
+
 module.exports = exports = EventEmitter;
+
+
