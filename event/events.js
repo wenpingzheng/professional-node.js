@@ -134,6 +134,7 @@ class EventEmitter {
         return ret;
     }
 }
+
 EventEmitter.prototype.on = EventEmitter.prototype.addListener;
 EventEmitter.EventEmitter = EventEmitter;
 module.exports = exports = EventEmitter;
