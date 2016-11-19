@@ -166,12 +166,12 @@ function sleep(time) {
  * timer is not safe
  */
 
-var a = new Date();
-setInterval(function () {
-    var b = new Date();
-    console.log('setInterval-----:', a - b);
-    sleep(5000);
-}, 1000);
+// var a = new Date();
+// setInterval(function () {
+//     var b = new Date();
+//     console.log('setInterval-----:', a - b);
+//     sleep(5000);
+// }, 1000);
 
 
 
