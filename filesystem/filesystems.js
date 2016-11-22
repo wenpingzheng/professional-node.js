@@ -224,23 +224,24 @@
  */
 
 //the differences;
-var fs = require("fs");
-fs.stat('/Users/richardgong/WebstormProjects/advancednode.js/filesystem/link/FileStatistics.png', function (error, stats) {
-    console.log(stats);
-    console.log('************************************************************************');
-});
-
-fs.lstat('/Users/richardgong/WebstormProjects/advancednode.js/filesystem/link/FileStatistics.png', function (error, stats) {
-    console.log(stats);
-    console.log('************************************************************************');
-
-});
-
-fs.open('/Users/richardgong/WebstormProjects/advancednode.js/filesystem/link/FileStatistics.png', 'a', function (err, fd) {
-    fs.fstat(fd, function (err, stats) {
-        console.log(stats);
-    });
-})
+// var fs = require("fs");
+// fs.stat('/Users/richardgong/WebstormProjects/advancednode.js/filesystem/link/FileStatistics.png', function (error, stats) {
+//     console.log(stats);
+//     console.log('************************************************************************');
+// });
+//
+//
+// fs.lstat('/Users/richardgong/WebstormProjects/advancednode.js/filesystem/link/FileStatistics.png', function (error, stats) {
+//     console.log(stats);
+//     console.log('************************************************************************');
+//
+// });
+//
+// fs.open('/Users/richardgong/WebstormProjects/advancednode.js/filesystem/link/FileStatistics.png', 'a', function (err, fd) {
+//     fs.fstat(fd, function (err, stats) {
+//         console.log(stats);
+//     });
+// });
 /***
  * fs.stat
  * { dev: 16777220,
@@ -289,3 +290,38 @@ fs.open('/Users/richardgong/WebstormProjects/advancednode.js/filesystem/link/Fil
    ctime: 2016-11-20T13:18:06.000Z,
    birthtime: 2016-11-20T13:18:06.000Z }
  */
+
+/***
+ * open() and openSync() methods
+ */
+
+
+// var fs = require("fs");
+// fs.open('./filesystem/openfiles/open_flag_r.txt', 'r', function (err,fd) {
+//     console.log(err);
+//     console.log(fd);
+// });
+
+/**
+ * read() and readSync()，are used to read data from an open file，
+ * fs.read(filedescriptor, buffer, offset, length, position, callback)
+ *
+ */
+
+var fs = require("fs");
+var path = __dirname + "/openfiles/open_flag_r.txt";
+fs.stat(path, function (error, stats) {
+    fs.open(path, "r", function (error, fd) {
+        var buffer = new Buffer(stats.size);
+        fs.read(fd, buffer, 0, buffer.length, 5, function (error, bytesRead, buffer) {
+            var data = buffer.toString("utf8");
+            console.log(data);
+        });
+    });
+});
+
+/**
+ * readFile() and readFileSync(),concise way for read
+ */
+
+

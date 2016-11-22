@@ -10,5 +10,6 @@
 #Opening Files Flags
 
 ![File Statistics](openfilesflag.png)
+![File Statistics](openfilesflag2.png)
 
 
