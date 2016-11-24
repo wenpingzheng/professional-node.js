@@ -244,10 +244,7 @@
 //     console.log('************************************************************************');
 // });
 //
-<<<<<<< HEAD
-=======
 //
->>>>>>> cfcfddfa87fddbd13dca17b51e9503d9cf0caac5
 // fs.lstat('/Users/richardgong/WebstormProjects/advancednode.js/filesystem/link/FileStatistics.png', function (error, stats) {
 //     console.log(stats);
 //     console.log('************************************************************************');
@@ -258,11 +255,8 @@
 //     fs.fstat(fd, function (err, stats) {
 //         console.log(stats);
 //     });
-<<<<<<< HEAD
 // })
-=======
-// });
->>>>>>> cfcfddfa87fddbd13dca17b51e9503d9cf0caac5
+
 /***
  * fs.stat
  * { dev: 16777220,
@@ -312,7 +306,6 @@
    birthtime: 2016-11-20T13:18:06.000Z }
  */
 
-<<<<<<< HEAD
 // /****
 //  * Reading Data from Files  !!!!
 //  */
@@ -549,7 +542,6 @@
 //     console.log(event,':', filename);
 // });
 //
-=======
 /***
  * open() and openSync() methods
  */
@@ -582,6 +574,6 @@ fs.stat(path, function (error, stats) {
 /**
  * readFile() and readFileSync(),concise way for read
  */
->>>>>>> cfcfddfa87fddbd13dca17b51e9503d9cf0caac5
+
 
 
