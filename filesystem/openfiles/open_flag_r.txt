@@ -1,0 +1,1 @@
+richard.gong test read() method
