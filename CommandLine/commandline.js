@@ -42,25 +42,34 @@
 //
 
 /***
- * Command Line Arguments in commander
+ * Command Line Arguments in commander-pluse
  */
 
-// var commander = require("commander");
-// commander
-//     .option("-f, --foo <i>", "Integer value for foo", parseInt, 0)
-//     .option("-b, --bar [j]", "Integer value for bar", parseInt, 0)
-//     .option("-z, --baz", "Boolean argument baz")
-//     .parse(process.argv);
-//
-// console.log(commander.foo);
-// console.log(commander.bar);
-// console.log(commander.baz);
+var program = require('commander-plus');
 
-// process.stdin.once("data", function(data) {
-//     var response = data.toString();
-//     console.log("You said your name is " + response);
-//     process.stdin.pause();
-// });
-// console.log("What is your name?");
-// process.stdin.resume();
+function range(val) {
+    return val.split('..').map(Number);
+}
+
+function list(val) {
+    return val.split(',');
+}
+
+program
+    .version('0.0.1')
+    .usage('[options] <file ...>')
+    .option('-i, --integer <n>', 'An integer argument', parseInt)
+    .option('-f, --float <n>', 'A float argument', parseFloat)
+    .option('-r, --range <a>..<b>', 'A range', range)
+    .option('-l, --list <items>', 'A list', list)
+    .option('-o, --optional [value]', 'An optional value')
+    .parse(process.argv);
+
+console.log(' int: %j', program.integer);
+console.log(' float: %j', program.float);
+console.log(' optional: %j', program.optional);
+program.range = program.range || [];
+console.log(' range: %j..%j', program.range[0], program.range[1]);
+console.log(' list: %j', program.list);
+console.log(' args: %j', program.args);
 

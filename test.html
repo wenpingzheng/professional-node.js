@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.0/vue.js"></script>
+</head>
+<body>
+<h1 id="balance">{{balance}}</h1>
+<script>
+
+    var OBJ = {
+        BetLock: true
+    };
+
+    /**
+     * 余额组件
+     * @type {any}
+     */
+
+    var Balance = new Vue({
+        el: "#balance",
+        data: {
+            balance:  gameConfigData.fAvailable
+        }
+    });
+
+    var his;
+    Object.defineProperty(OBJ, 'BetLock', {
+        get: function () {
+            return his;
+        },
+        set: function (newValue) {
+            if (OBJ.BetLock) {
+                Balance.balance = gameConfigData.fAvailable;
+            }
+
+            his = newValue;
+        }
+    });
+
+
+</script>
+
+
+</body>
+</html>
