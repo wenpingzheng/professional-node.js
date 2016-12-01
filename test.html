@@ -1,47 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.0/vue.js"></script>
-</head>
-<body>
-<h1 id="balance">{{balance}}</h1>
-<script>
+<style>
+    div[data-tip] {
+        position: relative;
+        display: inline-block;
+    }
+    div[data-tip]:hover {
+        cursor: pointer;
+    }
+    div[data-tip]:hover:before {
+        content: attr(data-tip);
+        background-color: #ea5415;
+        color: #fff;
+        padding: .8em 1em;
+        position: absolute;
+        left: 100%;
+        top: -70%;
+        margin-left: 8px;
+        white-space: pre;
+    }
+    div[data-tip]:hover:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-right: 8px solid #Ea5415;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+    }
+</style>
 
-    var OBJ = {
-        BetLock: true
-    };
+<div data-tip="前端迷">鼠标hover</div>
 
-    /**
-     * 余额组件
-     * @type {any}
-     */
-
-    var Balance = new Vue({
-        el: "#balance",
-        data: {
-            balance:  gameConfigData.fAvailable
-        }
-    });
-
-    var his;
-    Object.defineProperty(OBJ, 'BetLock', {
-        get: function () {
-            return his;
-        },
-        set: function (newValue) {
-            if (OBJ.BetLock) {
-                Balance.balance = gameConfigData.fAvailable;
-            }
-
-            his = newValue;
-        }
-    });
-
-
-</script>
-
-
-</body>
-</html>

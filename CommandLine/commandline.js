@@ -209,5 +209,6 @@ var obj = {
         }
     }
 };
-console.log(obj);
+
+util.inspect(obj)
 console.log(util.inspect(obj));
