@@ -40,6 +40,20 @@
 // var args = parseArgs();
 // console.log(args);
 //
+/****
+ * Standard Input
+ */
+
+//process.stdin.resume() //waiting for input
+//process.stdin.pause() //
+
+// process.stdin.once("data", function(data) {
+//     console.log("You said your name is " + data);
+//     process.stdin.pause();
+// });
+// console.log("What is your name?");
+// process.stdin.setEncoding("utf8");
+// process.stdin.resume();
 
 /***
  * Command Line Arguments in commander-pluse
@@ -196,7 +210,24 @@
 //
 //
 
-var util = require("util");
+// var util = require("util");
+// var obj = {
+//     foo: {
+//         bar: {
+//             baz: {
+//                 baff: false,
+//                 beff: "string value",
+//                 biff: null
+//             },
+//             boff: []
+//         }
+//     }
+// };
+// console.log(obj);
+// console.log(util.inspect(obj));
+
+
+var util = require("util");// notice:inspect() only recurses through two levels while formatting the object
 var obj = {
     foo: {
         bar: {
@@ -209,5 +240,6 @@ var obj = {
         }
     }
 };
-console.log(obj);
-console.log(util.inspect(obj));
+console.log(util.inspect(obj, {
+    depth: null
+}));
