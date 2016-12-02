@@ -4,6 +4,8 @@
 https://github.com/onmodulus/commander.js
 
 
-##console.log format flag
+##The Various String Encoding Types Supported by Node
+![File Statistics](setEncode.png)
 
+##console.log format flag
 ![File Statistics](consoleflag.png)
