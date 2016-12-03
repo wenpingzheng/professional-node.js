@@ -19,13 +19,13 @@ var emitter = new events.EventEmitter();
 
 //##One-Time Event Listeners
 
-// emitter.once("foo", function() {
-//     console.log("In foo handler");
+// emitter.once("foo.txt", function() {
+//     console.log("In foo.txt handler");
 // });
 //
-// emitter.emit("foo");
-// emitter.emit("foo");
-// emitter.emit("foo");
+// emitter.emit("foo.txt");
+// emitter.emit("foo.txt");
+// emitter.emit("foo.txt");
 
 //##Removing Event Listeners
 
@@ -41,7 +41,7 @@ var emitter = new events.EventEmitter();
  emitter.on("newListener", function (eventName, listener) {
  console.log("" + eventName + "", listener === f);
  });
- emitter.on("foo", f);
+ emitter.on("foo.txt", f);
  */
 
 /*
@@ -52,7 +52,7 @@ var emitter = new events.EventEmitter();
  console.log(date);
  });
  emitter.emit("newListener", new Date);
- emitter.on("foo", function() {});
+ emitter.on("foo.txt", function() {});
 
  */
 

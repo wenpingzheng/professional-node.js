@@ -1,12 +1,16 @@
 /**
- * Created by richard on 11/24/16.
- */
+ * Stream used to  reading and writing files and
+ // transmitting data over network sockets.
 
-// reading and writing files and
-// transmitting data over network sockets.
-/***
- * data Events,The end Event，close Event
- * @type {Stream}
+ */
+/*****************************************
+ * 1.Readable Streams
+ */
+/**
+ * data Events,The
+ * end Event:no more data
+ * close Event:stream data has been closed.
+ * error Event:problem occurred with the data stream
  */
 
 // var Stream = require("stream");
@@ -15,7 +19,7 @@
 // stream.on('data', function (inputdata) {
 //     console.log(inputdata.toString());
 // });
-// stream.emit("data", new Buffer("foo"));
+// stream.emit("data", new Buffer("foo.txt"));
 
 
 // var Stream = require("stream");
@@ -31,7 +35,7 @@
 // interval = setInterval(function() {
 //     var now = Date.now();
 //     console.log("Emitting a data event");
-//     stream.emit("data", new Buffer("foo"));
+//     stream.emit("data", new Buffer("foo.txt"));
 //     if (now >= end) {
 //         stream.emit("end","Emitting an end event");
 //         clearInterval(interval);
@@ -65,15 +69,19 @@
 //
 // stream.emit("data", 'clase flag');
 
-
-/***
- * pipie
+/**********************************
+ * 2.Writable Streams
+ * write() method:writing a chunk of data to the stream.
+ * end() methods:used to signal the end of the data stream,
+ * drain event: is used to alert thesource that the writable stream, having processed all its data, can begin receiving data again.
+ * finish event: it will emited when no more data
+ * close error Events:
  */
 
 // var Stream = require("stream");
 // var stream = new Stream();
 // var bytes = 0;
-// stream.writable = true;//what happen if false
+// stream.writable = true;
 // stream.write = function(buffer) {
 //     bytes += buffer.length;
 // };
@@ -85,19 +93,21 @@
 //     stream.emit("finish");
 //     console.log(bytes + " bytes written");
 // };
-// stream.pipe(stream);
-// stream.emit("data", new Buffer("foo"));
-// stream.emit("end");
-//
 
-
-/***
- * Writable Streams
+/********************************
+ * Pipes,
+ * pipe() Method
+ * e.g:node pipes/A.js | node pipes/B.js
+ *
+ * echo 'richardgong' | node pipes/B.js
  */
 
 
-/***
- * File Streams, createReadStream(path,[options ])
+
+/**********************************************
+ * 3.File Streams,
+ * createReadStream(path,[options]) method
+ * open Event:successfully opened
  */
 //demo 1
 // var colors = require('colors');
@@ -155,7 +165,96 @@
 /**
  * The ReadStream’s open Event
  */
+// var fs = require('fs');
+// var stream;
+// var color = require('colors');
+// fs.open(__dirname + "/stream.js", "r", function (error, fd) {
+//     if (error) {
+//         return console.error("open error: " + error.message);
+//     }
+//     stream = fs.createReadStream(null, {
+//         fd: fd,
+//         start: 1000
+//     });
+//
+//     stream.on("data", function (data) {
+//         console.log('****************************************'.green);
+//         console.log(data.toString());
+//     });
+//     stream.on("end", function () {
+//         console.log();
+//     });
+// });
 
+
+/**
+ * createWriteStream(path,[options]) method
+ */
+// var fs = require("fs");
+// var readStream = fs.createReadStream(__dirname + "/foo.txt");
+// var writeStream = fs.createWriteStream(__dirname + "/bar.txt");
+// readStream.pipe(writeStream);
+/**
+ * open Event:
+ */
+// var fs = require("fs");
+// var stream = fs.createWriteStream(__dirname + "/foo.txt");
+// stream.on("open", function(fd) {
+//     console.log("File descriptor: " + fd);
+// });
+/**
+ * The bytesWritten Property:number of bytes written to the underlying stream.
+ */
+// var fs = require("fs");
+// var readStream = fs.createReadStream(__dirname + "/foo.txt");
+// var writeStream = fs.createWriteStream(__dirname + "/bar.txt",{
+//     start:1000
+// });
+// readStream.pipe(writeStream);
+// writeStream.on("finish", function () {
+//     console.log(writeStream.bytesWritten);
+// });
+
+
+/***********************************************
+ * 4.zlib Module
+ */
+
+// var fs = require("fs");
+// var zlib = require("zlib");
+// var gzip = zlib.createGzip();
+// var input = fs.createReadStream("foo.txt");
+// var output = fs.createWriteStream("input.txt.gz");
+// input.pipe(gzip).pipe(output);
+
+//input | gzip | output
+
+
+// var fs = require("fs");
+// var zlib = require("zlib");
+// var gunzip = zlib.createGunzip();
+// var input = fs.createReadStream("input.txt.gz");
+// var output = fs.createWriteStream("output.txt");
+// input.pipe(gunzip).pipe(output);
+
+//input | gunzip | output
+
+/**
+ * Convenience Methods
+ */
+// var zlib = require("zlib");
+// var data = "This is some data to compress!";
+// zlib.deflate(data, function (error, compressed) {
+//     if (error) {
+//         return console.error("Could not compress data!");
+//     }
+//     zlib.unzip(compressed, function (error, decompressed) {
+//         if (error) {
+//             return console.error("Could not decompress data!");
+//         }
+//         console.log(decompressed.toString());
+//     });
+// });
 
 
 

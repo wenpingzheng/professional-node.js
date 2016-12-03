@@ -4,7 +4,7 @@
 
 // var events = require("./events");
 // var emitter = new events.EventEmitter();
-// emitter.emit("foo");
+// emitter.emit("foo.txt");
 //
 // var events = require("./events");
 // var emitter = new events.EventEmitter();
