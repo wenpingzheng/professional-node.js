@@ -2,6 +2,8 @@
  * Created by richard on 11/24/16.
  */
 
+// reading and writing files and
+// transmitting data over network sockets.
 /***
  * data Events,The end Event，close Event
  * @type {Stream}
@@ -25,6 +27,7 @@
 // stream.on('end', function (inputdata) {
 //     console.log(inputdata.toString());
 // });
+//
 // interval = setInterval(function() {
 //     var now = Date.now();
 //     console.log("Emitting a data event");
@@ -34,7 +37,7 @@
 //         clearInterval(interval);
 //     }
 // }, 1000);
-
+//
 //
 // var Stream = require("stream");
 // var stream = new Stream();
@@ -62,50 +65,96 @@
 //
 // stream.emit("data", 'clase flag');
 
+
+/***
+ * pipie
+ */
+
+// var Stream = require("stream");
+// var stream = new Stream();
+// var bytes = 0;
+// stream.writable = true;//what happen if false
+// stream.write = function(buffer) {
+//     bytes += buffer.length;
+// };
+// stream.end = function(buffer) {
+//     if (buffer) {
+//         stream.write(buffer);
+//     }
+//     stream.writable = false;
+//     stream.emit("finish");
+//     console.log(bytes + " bytes written");
+// };
+// stream.pipe(stream);
+// stream.emit("data", new Buffer("foo"));
+// stream.emit("end");
+//
+
+
 /***
  * Writable Streams
  */
 
-//process.stdout.write(chunck,[encoding],[callback)， return: Boolean value,
 
-// var success = process.stdout.write("foo\n", function(data) {
-//     console.log("Data was successfully written!");
+/***
+ * File Streams, createReadStream(path,[options ])
+ */
+//demo 1
+// var colors = require('colors');
+// var fs = require("fs");
+// fs.readFile('/Users/richard.g/Documents/workspaces/github-richardgong1987/msyh.ttf', function(err,data) {
+//     console.log('\n=====================input ******  data=========================================='.green);
+//     console.log(data.toString());
+// })
+//
+// var colors = require('colors');
+// var fs = require("fs");
+// fs.readFile('/Users/richard.g/Documents/software/CentOS-7-x86_64-DVD-1511.iso', function(err,data) {
+//     if (!err) {
+//         console.log('\n=====================input ******  data=========================================='.green);
+//         console.log(data.toString());
+//     } else{
+//         console.log(err);//throw an error
+//     }
+// })
+//
+
+
+// var colors = require('colors');
+// var fs = require("fs");
+// var stream;
+// stream = fs.createReadStream("/Users/richard.g/Documents/workspaces/github-richardgong1987/msyh.ttf");
+// stream.on("data", function (data) {
+//     var chunk = data.toString();
+//
+//     console.log('\n=====================input ******  data=========================================='.green);
+//     process.stdout.write(chunk);
 // });
-// console.log("success = " + success);
-
-
-// var success = process.stdout.write("中或要呆", 'ascii', function () {
-//     console.log('finished');
+//
+// stream.on("end", function () {
+//     console.log('\n***********************end*******************************'.red);
 // });
-// console.log("success = " + success);
+//
+
+// var colors = require('colors');
+// var fs = require("fs");
+// var stream;
+// stream = fs.createReadStream("/Users/richard.g/Documents/software/CentOS-7-x86_64-DVD-1511.iso");
+// stream.on("data", function (data) {
+//     var chunk = data.toString();
+//
+//     console.log('\n=====================input ******  data=========================================='.green);
+//     process.stdout.write(chunk);
+// });
+//
+// stream.on("end", function () {
+//     console.log('\n***********************end*******************************'.red);
+// });
 
 
-
-
-var Stream = require("stream");
-var stream = new Stream();
-var bytes = 0;
-stream.writable = true;
-stream.write = function(buffer) {
-    bytes += buffer.length;
-};
-stream.end = function(buffer) {
-    if (buffer) {
-        stream.write(buffer);
-    }
-    stream.writable = false;
-    stream.emit("finish");
-    console.log(bytes + " bytes written");
-};
-
-
-
-
-
-
-
-
-
+/**
+ * The ReadStream’s open Event
+ */
 
 
 
