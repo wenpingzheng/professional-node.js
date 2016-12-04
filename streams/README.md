@@ -15,5 +15,5 @@
 ![](createReadSteamflag.png)
 ![](createReadSteamflag2.png)
 
-#createReadStream() method options Argument
+#createWriteStream() method options Argument
 ![](writeReadSteamflag.png)

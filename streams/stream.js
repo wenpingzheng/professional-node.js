@@ -4,7 +4,7 @@
 
  */
 /*****************************************
- * 1.Readable Streams
+ * 1.Readable Streams,
  */
 /**
  * data Events,The
@@ -41,19 +41,20 @@
 //         clearInterval(interval);
 //     }
 // }, 1000);
-//
+
 //
 // var Stream = require("stream");
 // var stream = new Stream();
 // stream.readable = true;
 // stream.on('close', function (data) {
-//     console.log(closedata);
+//     console.log(data);
 // });
 // stream.on('data', function (closedata) {
 //     console.log(closedata);
 // });
-// stream.emit("close",'clase flag');
 // stream.emit("data",'data flag');
+// stream.emit("close",'clase flag');
+//
 
 
 // var Stream = require("stream");
@@ -103,7 +104,7 @@
  * echo 'richardgong' | node pipes/B.js
  */
 
-//
+
 // var Stream = require("stream");
 // var stream = new Stream();
 // var bytes = 0;
@@ -129,13 +130,14 @@
  * createReadStream(path,[options]) method:
  * fs.createReadStream,open Event:successfully opened
  */
+
 //demo 1
 // var colors = require('colors');
 // var fs = require("fs");
 // fs.readFile('/Users/richard.g/Documents/workspaces/github-richardgong1987/msyh.ttf', function(err,data) {
 //     console.log('\n=====================input ******  data=========================================='.green);
 //     console.log(data.toString());
-// })
+// });
 //
 // var colors = require('colors');
 // var fs = require("fs");
@@ -180,14 +182,14 @@
 // stream.on("end", function () {
 //     console.log('\n***********************end*******************************'.red);
 // });
-
+//
 
 /**
  * The fs.createReadStream’s  ,open Event
  */
 // var fs = require("fs");
 // var stream;
-// stream = fs.createReadStream(__dirname + "/foo.txt");
+// stream = fs.createReadStream(__dirname + "/foo.txt",{flags:'r+'});
 // stream.on("open", function(fd) {
 //     fs.fstat(fd, function(error, stats) {
 //         if (error) {
@@ -227,6 +229,7 @@
 // var readStream = fs.createReadStream(__dirname + "/foo.txt");
 // var writeStream = fs.createWriteStream(__dirname + "/bar.txt");
 // readStream.pipe(writeStream);
+// // readStream | writeStream
 /**
  * fs.createWriteStream, open Event:
  */
@@ -239,7 +242,7 @@
  * fs.createWriteStream, bytesWritten Property:number of bytes written to the underlying stream.
  */
 // var fs = require("fs");
-// var readStream = fs.createReadStream(__dirname + "/foo.txt");
+// var readStream = fs.createReadStream(__dirname + "/package.json");
 // var writeStream = fs.createWriteStream(__dirname + "/bar.txt",{
 //     start:1000
 // });
@@ -250,7 +253,7 @@
 
 
 /***********************************************
- * 4.zlib Module
+ * 4.zlib Module,http://www.zlib.net/
  */
 
 // var fs = require("fs");
@@ -289,7 +292,7 @@
 //         console.log(decompressed.toString());
 //     });
 // });
-
+//
 
 /**
  * Deflate/Inflate and DeflateRaw/InflateRaw
