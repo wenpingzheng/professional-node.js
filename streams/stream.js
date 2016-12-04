@@ -75,7 +75,8 @@
  * end() methods:used to signal the end of the data stream,
  * drain event: is used to alert thesource that the writable stream, having processed all its data, can begin receiving data again.
  * finish event: it will emited when no more data
- * close error Events:
+ * close event:
+ * error Events:
  */
 
 // var Stream = require("stream");
@@ -94,20 +95,39 @@
 //     console.log(bytes + " bytes written");
 // };
 
+
 /********************************
  * Pipes,
  * pipe() Method
  * e.g:node pipes/A.js | node pipes/B.js
- *
  * echo 'richardgong' | node pipes/B.js
  */
 
+//
+// var Stream = require("stream");
+// var stream = new Stream();
+// var bytes = 0;
+// stream.writable = true;
+// stream.write = function(buffer) {
+//     bytes += buffer.length;
+// };
+// stream.end = function(buffer) {
+//     if (buffer) {
+//         stream.write(buffer);
+//     }
+//     stream.writable = false;
+//     stream.emit("finish");
+//     console.log(bytes + " bytes written");
+// };
+// stream.pipe(stream);
+// stream.emit("data", new Buffer("foo"));
+// stream.emit("end");
 
 
 /**********************************************
- * 3.File Streams,
- * createReadStream(path,[options]) method
- * open Event:successfully opened
+ * 3.File Streams:
+ * createReadStream(path,[options]) method:
+ * fs.createReadStream,open Event:successfully opened
  */
 //demo 1
 // var colors = require('colors');
@@ -144,7 +164,7 @@
 // stream.on("end", function () {
 //     console.log('\n***********************end*******************************'.red);
 // });
-//
+
 
 // var colors = require('colors');
 // var fs = require("fs");
@@ -163,8 +183,21 @@
 
 
 /**
- * The ReadStream’s open Event
+ * The fs.createReadStream’s  ,open Event
  */
+// var fs = require("fs");
+// var stream;
+// stream = fs.createReadStream(__dirname + "/foo.txt");
+// stream.on("open", function(fd) {
+//     fs.fstat(fd, function(error, stats) {
+//         if (error) {
+//             console.error("fstat error: " + error.message);
+//         } else {
+//             console.log(stats);
+//         }
+//     });
+// });
+
 // var fs = require('fs');
 // var stream;
 // var color = require('colors');
@@ -188,14 +221,14 @@
 
 
 /**
- * createWriteStream(path,[options]) method
+ * fs.createWriteStream(path,[options]) method
  */
 // var fs = require("fs");
 // var readStream = fs.createReadStream(__dirname + "/foo.txt");
 // var writeStream = fs.createWriteStream(__dirname + "/bar.txt");
 // readStream.pipe(writeStream);
 /**
- * open Event:
+ * fs.createWriteStream, open Event:
  */
 // var fs = require("fs");
 // var stream = fs.createWriteStream(__dirname + "/foo.txt");
@@ -203,7 +236,7 @@
 //     console.log("File descriptor: " + fd);
 // });
 /**
- * The bytesWritten Property:number of bytes written to the underlying stream.
+ * fs.createWriteStream, bytesWritten Property:number of bytes written to the underlying stream.
  */
 // var fs = require("fs");
 // var readStream = fs.createReadStream(__dirname + "/foo.txt");
@@ -242,20 +275,28 @@
 /**
  * Convenience Methods
  */
-var zlib = require("zlib");
-var data = "This is some data to compress!";
-zlib.deflate(data, function (error, compressed) {
-    console.log(compressed.toString());
-    if (error) {
-        return console.error("Could not compress data!");
-    }
-    zlib.unzip(compressed, function (error, decompressed) {
-        if (error) {
-            return console.error("Could not decompress data!");
-        }
-        console.log(decompressed.toString());
-    });
-});
+// var zlib = require("zlib");
+// var data = "This is some data to compress!";
+// zlib.deflate(data, function (error, compressed) {
+//     console.log('compressed data:',compressed.toString());
+//     if (error) {
+//         return console.error("Could not compress data!");
+//     }
+//     zlib.unzip(compressed, function (error, decompressed) {
+//         if (error) {
+//             return console.error("Could not decompress data!");
+//         }
+//         console.log(decompressed.toString());
+//     });
+// });
 
 
-
+/**
+ * Deflate/Inflate and DeflateRaw/InflateRaw
+ */
+// The Deflate compression scheme can be used as an alternative to Gzip. The DeflateRaw scheme is similar to Deflate,
+//     but omits the zlib header that is present in Deflate. As previously mentioned, the usage for these schemes are the
+// same as for Gzip. The methods used to create Deflate and DeflateRaw streams are zlib.createDeflate() and
+// zlib.createDeflateRaw(). Similarly, zlib.createInflate() and zlib.createInflateRaw() are used to create the
+// corresponding decompression streams. An additional method, zlib.createUnzip(), is used in the same way, and it
+// can decompress both Gzip and Deflate compressed data by automatically detecting the compression scheme.
