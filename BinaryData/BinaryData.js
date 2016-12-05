@@ -14,8 +14,8 @@
  * Endianness
  */
 
-var os = require("os");
-console.log(os.endianness());
+// var os = require("os");
+// console.log(os.endianness());
 
 
 
