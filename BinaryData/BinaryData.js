@@ -18,6 +18,56 @@
 // console.log(os.endianness());
 
 
+/*******************************
+ * function ArrayBuffer(length) {}
+ @param {number} length
+ @constructor
+ ArrayBuffer is very similar to working with a normal array
+ */
+
+
+// var a = new ArrayBuffer(1);
+// a[0] = 'riaaa'
+// a[1] = 'riaaa'
+// a[2] = 'riaaa'
+//
+// console.log(a.byteLength,'aa',a);
+
+//a.push('aaa')
+
+/**
+ * ArrayBuffer.prototype.slice = function(start(inclusive),end(exclusive)) {};
+ @param {number} start
+ @param {number} end
+ @return {ArrayBuffer}
+ usage:extract a new ArrayBuffer from an existing
+ */
+
+// var foo = new ArrayBuffer(4);
+// foo[0] = 0;
+// foo[1] = 1;
+// foo[2] = 2;
+// foo[3] = 3;
+// console.log(foo.slice(2, 4));
+// console.log(foo.slice(2, foo.byteLength));
+// console.log(foo.slice(2));
+// console.log(foo.slice(-2));
+// console.log(foo);
+
+
+
+
+var foo = new ArrayBuffer(4);
+var bar;
+foo[0] = 0;
+foo[1] = 1;
+foo[2] = 2;
+foo[3] = 3;
+// Create a copy of foo and modify it
+bar = foo.slice(0);
+bar[0] = 0xc;
+console.log(foo);
+console.log(bar);
 
 
 
