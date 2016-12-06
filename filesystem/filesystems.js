@@ -44,7 +44,7 @@
 // //.1 path.sep=> separate the parts of a file path,window use "\", linux,mac,use "/"
 //
 //
-// var dir = ["foo", "bar", "baz"];// array
+// var dir = ["foo.txt", "bar", "baz"];// array
 // var path = require('path');
 // // console.log(path.sep);//if in window it will print '\', but here is '/'
 //
@@ -81,7 +81,7 @@
 // If a path contains no periods, the empty string is returned.
 
 // var path = require("path");
-// var fileName = "/foo/bar/baz.txt";
+// var fileName = "/foo.txt/bar/baz.txt";
 // var extension = path.extname(fileName);
 // console.log(extension);
 
@@ -93,12 +93,12 @@
 
 // //2.path.basename(), method returns the last nonempty part of a path.
 // var path = require("path");
-// var fileName = "/foo/bar/baz.txt";
+// var fileName = "/foo.txt/bar/baz.txt";
 // var file = path.basename(fileName);
 // console.log(file);
 //
 // var path = require("path");
-// var fileName = "/foo/bar/baz.txt";
+// var fileName = "/foo.txt/bar/baz.txt";
 // var extension = path.extname(fileName);
 // var file = path.basename(fileName, extension);
 // console.log(file);
@@ -106,19 +106,19 @@
 // //3.path.dirname(),method returns the directory portion of a path
 //
 // var path = require("path");
-// var fileName = "/foo/bar/baz.txt";
+// var fileName = "/foo.txt/bar/baz.txt";
 // var dirName = path.dirname(fileName);
 // console.log(dirName);
 
 
 // //4.path.normalize(),likely,command line arguments from a user.
 // var path = require("path");
-// var dirName = "/foo/bar/.././bar/../../baz"; //
+// var dirName = "/foo.txt/bar/.././bar/../../baz"; //
 /**
- * /foo/bar/../ => /foo/
- * /foo/bar/.././bar/ => /foo/bar/
- * /foo/bar/.././bar/../../ => /
- * "/foo/bar/.././bar/../../baz"=> /baz
+ * /foo.txt/bar/../ => /foo.txt/
+ * /foo.txt/bar/.././bar/ => /foo.txt/bar/
+ * /foo.txt/bar/.././bar/../../ => /
+ * "/foo.txt/bar/.././bar/../../baz"=> /baz
  */
 // var normalized = path.normalize(dirName);
 // console.log(normalized);
@@ -126,7 +126,7 @@
 // //6. path.join(),Operating on an arbitrary number of strings, join() takes these,strings and creates a single normalized path.
 //
 // var path = require("path");
-// var normalized = path.join("/foo/bar", ".././bar", "../..", "/baz");
+// var normalized = path.join("/foo.txt/bar", ".././bar", "../..", "/baz");
 //
 // console.log(normalized);
 
@@ -143,21 +143,21 @@
 // //8. path.resolve() method resolves a sequence of paths or path segments into an absolute path.
 //
 // var path = require('path');
-// console.log(path.resolve('../foo/bar', './baz'));
-//console.log(path.join('../foo/bar', './baz'));
-//../foo/bar/baz
-///Users/richardgong/WebstormProjects/advancednode.js + ../foo/bar/baz
-//Users/richardgong/WebstormProjects/foo/bar/baz
+// console.log(path.resolve('../foo.txt/bar', './baz'));
+//console.log(path.join('../foo.txt/bar', './baz'));
+//../foo.txt/bar/baz
+///Users/richardgong/WebstormProjects/advancednode.js + ../foo.txt/bar/baz
+//Users/richardgong/WebstormProjects/foo.txt/bar/baz
 
-// returns '/foo/bar/baz'
+// returns '/foo.txt/bar/baz'
 
 //// 9.other...
 //
 // var path = require('path');
-// console.log(path.isAbsolute('./foo/bar'),path.isAbsolute('/foo/bar'));
+// console.log(path.isAbsolute('./foo.txt/bar'),path.isAbsolute('/foo.txt/bar'));
 
 // var path = require('path');
-// console.log(path._makeLong('./foo/bar'),path._makeLong('/foo/bar'));
+// console.log(path._makeLong('./foo.txt/bar'),path._makeLong('/foo.txt/bar'));
 //
 //
 // var path = require('path');
@@ -329,7 +329,7 @@
 //  */
 //
 // var fs = require("fs");
-// var path = __dirname + "/foo.txt";
+// var path = __dirname + "/foo.txt.txt";
 //
 //
 // fs.readFile(path, "utf8", function(error, data) {
@@ -346,7 +346,7 @@
 //  */
 //
 // var fs = require("fs");
-// var path = __dirname + "/foo.txt";
+// var path = __dirname + "/foo.txt.txt";
 // var data = "Lorem ipsum dolor sit amet";
 // fs.writeFile(path, data, function(error) {
 //     if (error) {
@@ -384,7 +384,7 @@
 //
 
 // var fs = require("fs");
-// var oldPath = __dirname + "/foo.txt";
+// var oldPath = __dirname + "/foo.txt.txt";
 // var newPath = __dirname + "/bar.txt";
 // fs.rename(oldPath, newPath, function(error) {
 //     if (error) {
@@ -414,7 +414,7 @@
  */
 
 // var fs = require("fs");
-// var path = __dirname + "/foo";
+// var path = __dirname + "/foo.txt";
 // fs.mkdir(path, function(error) {
 //
 // });
@@ -441,7 +441,7 @@
  */
 
 // var fs = require("fs");
-// var path = __dirname + "/foo";
+// var path = __dirname + "/foo.txt";
 // fs.rmdir(path, function (error) {
 //     if (error) {
 //         console.error("rmdir error: " + error.message);
@@ -450,7 +450,7 @@
 
 
 // var fs = require("fs");
-// var path = __dirname + "/foo";
+// var path = __dirname + "/foo.txt";
 // function rmdir(path) {
 //     if (fs.existsSync(path)) {
 //         fs.readdirSync(path).forEach(function (file) {
@@ -469,7 +469,7 @@
 //
 // var async = require("async");
 // var fs = require("fs");
-// var path = __dirname + "/foo";
+// var path = __dirname + "/foo.txt";
 // function rmdir(path, callback) {
 // // first check if the path exists
 //     fs.exists(path, function(exists) {
@@ -521,7 +521,7 @@
  */
 
 // var fs = require("fs");
-// var path = __dirname + "/foo.txt";
+// var path = __dirname + "/foo.txt.txt";
 // fs.watch(path, {
 //     persistent: true
 // }, function(event, filename) {

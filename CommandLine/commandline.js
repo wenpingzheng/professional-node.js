@@ -266,7 +266,7 @@ var obj = {
 
 // var util = require("util");
 // var obj = {
-//     foo: {
+//     foo.txt: {
 //         bar: {
 //             baz: {
 //                 baff: false,
@@ -302,7 +302,7 @@ var obj = {
  */
 
 
-// (function foo() {
+// (function foo.txt() {
 //     (function bar() {
 //         (function baz() {
 //             console.trace("test-trace");
@@ -320,7 +320,7 @@ var obj = {
 // }
 //
 //
-// (function foo() {
+// (function foo.txt() {
 //     (function bar() {
 //         (function baz() {
 //             myTrace('richard.g custom trace');
@@ -333,7 +333,7 @@ var obj = {
  */
 
 
-// console.log("foo");
+// console.log("foo.txt");
 // console.error("bar");
 
 //node commandline.js > out.txt
@@ -341,7 +341,7 @@ var obj = {
 /***
  * this time stdout is redirected to the file output.txt
  using the > operator. Note that redirection has no effect on the stderr stream. The result is that bar, which is sent to
- stderr, is printed in the terminal window, while foo is not.
+ stderr, is printed in the terminal window, while foo.txt is not.
  */
 
 

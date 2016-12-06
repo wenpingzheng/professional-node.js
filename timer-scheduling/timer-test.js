@@ -15,8 +15,8 @@ function sleep(time) {
  * @type {*}
  */
 
-// setTimeout(function(foo, bar) {
-//     console.log(foo + " " + bar);
+// setTimeout(function(foo.txt, bar) {
+//     console.log(foo.txt + " " + bar);
 // },0,'a','b');
 //
 
