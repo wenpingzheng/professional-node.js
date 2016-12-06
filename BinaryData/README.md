@@ -1,17 +1,21 @@
 #BinaryData
 
-##1.Overview
-##2.Typed Array Specification
-##3.Node Buffers
 
-
+##Buffer
+##Overview
+##Typed Array Specification
+##Node Buffers
 
 ##Endianness
 ![](endian.png)
 
 
 ##ArrayBuffer Views
+http://www.javascripture.com/ArrayBuffer
 ![](arraybufferviews.png)
+ 
+![](bufferviews.png)
+
 
 
 
