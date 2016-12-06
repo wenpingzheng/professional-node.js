@@ -12,6 +12,7 @@
  * @param {Number|Array|String} obj size of octets (Number) | array of octets (Array) | string to encode (String)
  * @param {String?} encoding encoding to use if the first parameter type is string
  */
+//var bu = new Buffer();//error
 // var buffer = new Buffer(8);
 // console.log(buffer.toString());
 // var buffer = new Buffer([8, 6, 7, 5, 3, 0, 9]);
@@ -19,6 +20,30 @@
 // var buffer = new Buffer("I'm a string!", "utf-8")
 // console.log(buffer);
 // console.log(String.fromCharCode(73/* 0x49=73 */));
+
+/**
+ * @static
+ * @param {Object} obj Object
+ * @returns {Boolean} true if <i><code>obj</code></i> is a <i><code>Buffer</code></i>
+ * Buffer.isBuffer = function(obj) {};
+ */
+// var buf = new Buffer(5);
+// console.log(Buffer.isBuffer(buf));
+
+/**
+ * Gives the actual byte length of a string. This is not the same as
+ * <i><code>String.prototype.length</code></i> since that returns the number of characters in a string.
+ *
+ * @static
+ * @param {String} string String object
+ * @param {String?} [encoding='utf8'] Encoding
+ * @returns {Number}  the actual byte length of a string
+ * Buffer.byteLength = function(string, encoding) {}
+ */
+// var byteLength = Buffer.byteLength("foo");
+// var length = (new Buffer("foo")).length;
+// console.log(byteLength);
+// console.log(length);
 
 
 /**
@@ -28,9 +53,7 @@
  * @param {Number?} [length=buffer.length-offset] the number of bytes to write
  * @param {String?} [encoding='utf8'] data to be written to buffer
  * @returns {Number} number of octets written
- * Buffer.prototype.write = function(string, offset, length, encoding) {
-
-    };
+ * Buffer.prototype.write = function(string, offset, length, encoding) {}
  */
 // buf = new Buffer(256);
 // len = buf.write('\u00bd + \u00bc = \u00be', 0);
@@ -45,9 +68,9 @@
  * @param {Number|String} value (if it's string, the first char code is used)
  * @param {Number?} [offset=0] start buffer offset
  * @param {Number?} [end=this.length] end buffer offset
- * Buffer.prototype.fill = function(value, offset, end) {
-};
+ * Buffer.prototype.fill = function(value, offset, end) {}
  */
+
 // buf = new Buffer(256);
 // buf.fill(0);
 // len = buf.write('\u00bd + \u00bc = \u00be', 0);
@@ -61,6 +84,81 @@
 // buf.writeDoubleLE(3.14, 0,true);
 // var value = buf.readDoubleLE(0);
 // console.log(value,buf.toString());
+
+
+/**
+ * Returns a new buffer which references the same memory as the old, but offset and cropped by the <i><code>start</code></i>
+ * and <i><code>end</code</i> indexes. Negative indexes start from the end of the buffer.
+ * <b>Modifying the new buffer slice will modify memory in the original buffer!</b>
+ *
+ * @param {Number?} [start=0]
+ * @param {Number?} [end=this.length]
+ * @returns {Buffer}
+ * Buffer.prototype.slice = function(start, end) {}
+ */
+// var buf1 = new Buffer(256);
+// buf1.fill(0)
+// var buf2 = buf1.slice();
+// console.log(buf2);
+// var buf3 = buf1.slice(250);
+// console.log(buf3);
+//
+// var buf4 = buf1.slice(250, 253);
+// console.log(buf4);
+
+/**
+ * Does copy between buffers. The source and target regions can be overlapped.
+ * All values passed that are undefined/NaN or are out of bounds are set equal to their respective defaults.
+ *
+ * @param {Buffer} targetBuffer Buffer to copy into
+ * @param {Number?} [targetStart=0] start offset in <i><code>targetBuffer</code></i>
+ * @param {Number?} [sourceStart=0] start offset in <i><code>this buffer</code></i>
+ * @param {Number?} [sourceEnd=this.length] end offset in <i><code>this buffer</code></i>
+ * Buffer.prototype.copy = function(targetBuffer, targetStart, sourceStart, sourceEnd) {}
+ */
+//
+// var buf1 = new Buffer(20);
+// var buf2 = new Buffer(18);
+// var buf3 = new Buffer(18);
+// buf1.copy(buf2);
+// console.log(buf2);
+//
+// buf1.copy(buf3,8);
+// console.log(buf3);
+
+
+// var buf1 = new Buffer([1, 2, 3, 4]);
+// var buf2 = new Buffer(4);
+// buf1.copy(buf2, 0, 0, buf1.length);
+//
+// console.log(buf2);
+
+/**
+ * Returns a buffer which is the result of concatenating all the buffers in the list together.
+ * If the list has no items, or if the <i><code>totalLength</code></i> is 0, then it returns a zero-length buffer.
+ * If the list has exactly one item, then the first item of the list is returned.
+ * If the list has more than one item, then a new Buffer is created.
+ * If <i><code>totalLength</code></i> is not provided, it is read from the buffers in the list. However, this adds an additional loop to the function, so it is faster to provide the length explicitly.
+ *
+ * @static
+ * @param {Array} list List of Buffer objects to concat
+ * @param {Number?} totalLength Total length of the buffers when concatenated
+ * @returns {Buffer}
+ * Buffer.concat = function(list, totalLength) {}
+ */
+
+// var buf1 = new Buffer([1, 2]);
+// var buf2 = new Buffer([3, 4]);
+// var buf = Buffer.concat([buf1, buf2]);
+// console.log(buf);
+
+// var buf1 = new Buffer([1, 2]);
+// var buf2 = new Buffer([3, 4]);
+// var buf = Buffer.concat([buf1, buf2],3);
+// console.log(buf);
+
+
+
 
 /****************************
  * Overview
