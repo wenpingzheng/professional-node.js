@@ -1,3 +1,21 @@
+/**
+ * The Buffer class is a global type for dealing with binary data directly. It can be constructed in a variety of ways:
+ *
+ * <i><code>new Buffer(size)</code></i> - Allocates a new buffer of <i><code>size</i></code> octets.
+ * <i><code>new Buffer(array)</code></i> - Allocates a new buffer using an <i><code>array</code></i> of octets.
+ * <i><code>new Buffer(str, [encoding])</code></i> - Allocates a new buffer containing the given <i><code>str</code></i>. <i><code>encoding</code></i> defaults to <i><code>'utf8'</code></i>.
+ *
+ * See <a href="http://nodejs.org/api/buffer.html">http://nodejs.org/api/buffer.html</a> for more information.
+ *
+ * @constructor
+ * @this {Buffer}
+ * @param {Number|Array|String} obj size of octets (Number) | array of octets (Array) | string to encode (String)
+ * @param {String?} encoding encoding to use if the first parameter type is string
+ */
+
+var buf = new Buffer(100)
+
+
 /****************************
  * Overview
  */
