@@ -1,4 +1,4 @@
-/**
+/****************************************************************************************
  * The Buffer class is a global type for dealing with binary data directly. It can be constructed in a variety of ways:
  *
  * <i><code>new Buffer(size)</code></i> - Allocates a new buffer of <i><code>size</i></code> octets.
@@ -12,9 +12,55 @@
  * @param {Number|Array|String} obj size of octets (Number) | array of octets (Array) | string to encode (String)
  * @param {String?} encoding encoding to use if the first parameter type is string
  */
+// var buffer = new Buffer(8);
+// console.log(buffer.toString());
+// var buffer = new Buffer([8, 6, 7, 5, 3, 0, 9]);
+// console.log(buffer);
+// var buffer = new Buffer("I'm a string!", "utf-8")
+// console.log(buffer);
+// console.log(String.fromCharCode(73/* 0x49=73 */));
 
-var buf = new Buffer(100)
 
+/**
+ * Writes <i><code>string</code></i> to the buffer at <i><code>offset</code></i> using the given encoding.
+ * @param {String} string data to be written to buffer
+ * @param {Number?} [offset=0] start buffer position
+ * @param {Number?} [length=buffer.length-offset] the number of bytes to write
+ * @param {String?} [encoding='utf8'] data to be written to buffer
+ * @returns {Number} number of octets written
+ * Buffer.prototype.write = function(string, offset, length, encoding) {
+
+    };
+ */
+// buf = new Buffer(256);
+// len = buf.write('\u00bd + \u00bc = \u00be', 0);
+// console.log(len + " bytes: " + buf.toString());
+// console.log(len + " bytes: " + buf.toString('utf8'));
+// console.log(len + " bytes: " + buf.toString('utf8', 0, 2));
+// console.log(len + " bytes: " + buf.toString('utf8', 0, len));
+
+
+/**
+ * Fills the buffer with the specified value. If the <i><code>offset</code></i> and <i><code>end</code></i> are not given it will fill the entire buffer.
+ * @param {Number|String} value (if it's string, the first char code is used)
+ * @param {Number?} [offset=0] start buffer offset
+ * @param {Number?} [end=this.length] end buffer offset
+ * Buffer.prototype.fill = function(value, offset, end) {
+};
+ */
+// buf = new Buffer(256);
+// buf.fill(0);
+// len = buf.write('\u00bd + \u00bc = \u00be', 0);
+// console.log(len + " bytes: " + buf.toString());
+// console.log(len + " bytes: " + buf.toString('utf8'));
+// console.log(len + " bytes: " + buf.toString('utf8', 0, 2));
+// console.log(len + " bytes: " + buf.toString('utf8', 0, len));
+
+// var buf = new Buffer(8);
+// buf.fill(0)
+// buf.writeDoubleLE(3.14, 0,true);
+// var value = buf.readDoubleLE(0);
+// console.log(value,buf.toString());
 
 /****************************
  * Overview
@@ -127,17 +173,5 @@ var buf = new Buffer(100)
 // }
 //
 
-
-
-var buf1 = new Buffer('1234');
-var buf2 = new Buffer('567');
-var bufList = [buf1, buf2];
-var buf3 = Buffer.concat(bufList);
-console.log('buf3 - %s', buf3.toString());
-var buf4 = buf3.slice(3, 8);
-console.log('buf4 - %s', buf4.toString());
-var buf5 = new Buffer(5);
-buf3.copy(buf5, 0, 1);
-console.log('buf5 - %s', buf5.toString());
 
 
