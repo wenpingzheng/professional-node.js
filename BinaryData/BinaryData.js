@@ -252,14 +252,30 @@
 // view2[1] = 2;
 //
 // console.log("Uint32 = " + view1[0]);
+//
+//
 
 
-// var buf = new ArrayBuffer(5);
-// var view = new Int32Array(buf, 0, 1);
-// view[0] = 256;
-// buf[4] = 5;
-// console.log(view[0]);
+var arraybuffer = new ArrayBuffer(4);
 
+var aView = new Int8Array(arraybuffer);  //从0开始到内存末尾
+
+var bView = new Int8Array(arraybuffer,2); //从2开始到末尾
+
+aView[0] = 1;
+aView[1] = 2;
+aView[2] = 3;
+aView[3] = 4;
+
+bView[0] = 9;
+bView[1] = 8;
+
+console.log(aView[2] );      //return   9
+console.log(aView[3] );      //return   8
+
+var view = new Int16Array([1,653,700,-90,88]);
+
+console.log(view);
 
 // // 创建16个字节的内存，1字节=8位2进制
 // var buffer = new ArrayBuffer(16);
