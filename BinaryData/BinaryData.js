@@ -256,26 +256,28 @@
 //
 
 
-var arraybuffer = new ArrayBuffer(4);
+// var arraybuffer = new ArrayBuffer(4);
+//
+// var aView = new Int8Array(arraybuffer);  //从0开始到内存末尾
+//
+// var bView = new Int8Array(arraybuffer,2); //从2开始到末尾
+//
+// aView[0] = 1;
+// aView[1] = 2;
+// aView[2] = 3;
+// aView[3] = 4;
+//
+// bView[0] = 9;
+// bView[1] = 8;
+//
+// console.log(aView[2] );      //return   9
+// console.log(aView[3] );      //return   8
+//
+// var view = new Int16Array([1,653,700,-90,88]);
+//
+// console.log(view);
 
-var aView = new Int8Array(arraybuffer);  //从0开始到内存末尾
 
-var bView = new Int8Array(arraybuffer,2); //从2开始到末尾
-
-aView[0] = 1;
-aView[1] = 2;
-aView[2] = 3;
-aView[3] = 4;
-
-bView[0] = 9;
-bView[1] = 8;
-
-console.log(aView[2] );      //return   9
-console.log(aView[3] );      //return   8
-
-var view = new Int16Array([1,653,700,-90,88]);
-
-console.log(view);
 
 // // 创建16个字节的内存，1字节=8位2进制
 // var buffer = new ArrayBuffer(16);
@@ -286,6 +288,35 @@ console.log(view);
 //     int32View[i] = i; // 对每一个int32的变量赋值
 // }
 //
+
+
+// var arraybuffer = new ArrayBuffer(32);
+//
+// var aView = new Int16Array(arraybuffer,0,4);    //占用0-7
+//
+// var bView = new Float32Array(arraybuffer,8,5);  //占用8-27
+//
+// var cView = new Uint8Array(arraybuffer,28,4)    //仅剩4个,报错Invalid typed array length
+
+
+
+var arraybuffer = new ArrayBuffer(4);
+
+var aView = new Int8Array(arraybuffer);  //从0开始到内存末尾
+
+var bView = new Int16Array(arraybuffer,2); //从2开始到末尾
+
+aView[0] = 1;
+aView[1] = 2;
+aView[2] = 3;
+aView[3] = 4;
+
+bView[0] = 500;
+bView[1] = 8;
+
+console.log(aView[2] );      //return   -12
+console.log(aView[3] );      //return   1
+console.log(bView[1]);
 
 
 
