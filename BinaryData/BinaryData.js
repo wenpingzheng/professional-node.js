@@ -158,26 +158,6 @@
 // console.log(buf);
 
 
-/****************************
- * Overview
- */
-// console.log({"foo": "bar"});
-// console.log(new Buffer("{foo: 'bar'}"));
-// //<buffer 7b 22 66 6f 6f 22 3a 20 22 62 61 72 22 7d>
-// console.log(String.fromCharCode(0x7b, 0x22, 0x66, 0x6f, 0x6f, 0x22, 0x3a, 0x20, 0x22, 0x62, 0x61, 0x72, 0x22, 0x7d));//{"foo": "bar"}
-//
-// var chinese = new Buffer('中')
-// //<Buffer e4 b8 ad>
-// console.log(chinese.toString());//中
-
-/**
- * Endianness
- */
-
-// var os = require("os");
-// console.log(os.endianness());
-
-
 /*******************************
  * function ArrayBuffer(length) {}
  @param {number} length
@@ -193,7 +173,7 @@
 //
 // console.log(a.byteLength,'aa',a);
 
-//a.push('aaa')
+//a.push('aaa')//error
 
 /**
  * ArrayBuffer.prototype.slice = function(start(inclusive),[end(exclusive])) {};
@@ -305,18 +285,17 @@
 //
 
 
-var buf = new ArrayBuffer(4);
-var view1 = new Uint32Array(buf);
-var view2 = new Uint8Array(buf);
-view1[0] = 100;
-console.log("Uint32 = " + view1[0]);//100
-view2[1] = 1;
-console.log("Uint32 = " + view1[0]);//356
-/**
- * 1,2,3,4
- */
+// var buf = new ArrayBuffer(4);
+// var view1 = new Uint32Array(buf);
+// var view2 = new Uint8Array(buf);
+// view1[0] = 100;
+// console.log("Uint32 = " + view1[0]);//100
+// view2[1] = 1;
+    // console.log("Uint32 = " + view1[0]);//356 ,
 
+var bf = Buffer(1);
 
+console.log(bf[0]);
 
 
 
