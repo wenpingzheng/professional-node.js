@@ -37,12 +37,11 @@ console.log("Uint32 = " + view1[0]);//356
 
 
 
+#Writing Numeric Data
+![](WritingNumericData.png)
 
-
-
-
-
-
+#Reading Numeric Data
+![](ReadingNumericData.png)
 
 
 

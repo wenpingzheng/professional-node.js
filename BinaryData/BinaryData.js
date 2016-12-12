@@ -1,3 +1,144 @@
+
+/*******************************
+ * function ArrayBuffer(length) {}
+ @param {number} length
+ @constructor
+ ArrayBuffer is very similar to working with a normal array
+ */
+
+
+// var a = new ArrayBuffer(1);
+// a[0] = 'riaaa'
+// a[1] = 'riaaa'
+// a[2] = 'riaaa'
+//
+// console.log(a.byteLength,'aa',a);
+
+//a.push('aaa')//error
+
+/**
+ * ArrayBuffer.prototype.slice = function(start(inclusive),[end(exclusive])) {};
+ @default extraact one item
+ @param {number} start
+ @param {number} end
+ @return {ArrayBuffer}
+ usage:extract a new ArrayBuffer from an existing
+ */
+
+// var foo = new ArrayBuffer(4);
+// foo[0] = 0;
+// foo[1] = 1;
+// foo[2] = 2;
+// foo[3] = 3;
+// console.log(foo.slice(2, 4));
+// console.log(foo.slice(2, foo.byteLength));
+// console.log(foo.slice(2));
+// console.log(foo.slice(-2));
+// console.log(foo);
+
+
+// var foo = new ArrayBuffer(4);
+// var bar;
+// foo[0] = 0;
+// foo[1] = 1;
+// foo[2] = 2;
+// foo[3] = 3;
+// // Create a copy of foo and modify it
+// bar = foo.slice(0);
+// bar[0] = 0xc;
+// console.log(foo);
+// console.log(bar);
+
+
+/**
+ * ArrayBuffer Views
+ */
+//
+// var buf = new ArrayBuffer(8);
+// var view = new Uint32Array(buf);
+// view[0] = 100;
+// view[1] = 10000000000;
+// console.log(view);
+
+
+// var buf = new ArrayBuffer(4);
+// var view1 = new Uint32Array(buf);
+// var view2 = new Uint8Array(buf);
+// // write to view1 and print the value
+// view1[0] = 0;
+// console.log("Uint32 = " + view1[0]);
+// // write to view2 and print view1's value
+// view2[1] = 2;
+//
+// console.log("Uint32 = " + view1[0]);
+//
+//
+
+
+// var arraybuffer = new ArrayBuffer(4);
+//
+// var aView = new Int8Array(arraybuffer);  //从0开始到内存末尾
+//
+// var bView = new Int8Array(arraybuffer,2); //从2开始到末尾
+//
+// aView[0] = 1;
+// aView[1] = 2;
+// aView[2] = 3;
+// aView[3] = 4;
+//
+// bView[0] = 9;
+// bView[1] = 8;
+//
+// console.log(aView[2] );      //return   9
+// console.log(aView[3] );      //return   8
+//
+// var view = new Int16Array([1,653,700,-90,88]);
+//
+// console.log(view);
+
+
+// var arraybuffer = new ArrayBuffer(32);
+//
+// var aView = new Int16Array(arraybuffer,0,4);    //占用0-7
+//
+// var bView = new Float32Array(arraybuffer,8,5);  //占用8-27
+//
+// var cView = new Uint8Array(arraybuffer,28,4)    //仅剩4个,报错Invalid typed array length
+
+
+// var arraybuffer = new ArrayBuffer(4);
+//
+// var aView = new Int8Array(arraybuffer);  //从0开始到内存末尾
+//
+// var bView = new Int16Array(arraybuffer,2); //从2开始到末尾
+//
+// aView[0] = 1;
+// aView[1] = 2;
+// aView[2] = 3;
+// aView[3] = 4;
+//
+// bView[0] = 500;
+// bView[1] = 8;
+//
+// console.log(aView[2] );      //return   -12
+// console.log(aView[3] );      //return   1
+// console.log(bView[1]);
+//
+
+
+// var buf = new ArrayBuffer(4);
+// var view1 = new Uint32Array(buf);
+// var view2 = new Uint8Array(buf);
+// view1[0] = 100;
+// console.log("Uint32 = " + view1[0]);//100
+// view2[1] = 1;
+    // console.log("Uint32 = " + view1[0]);//356 ,
+
+// var bf = Buffer(1);
+//
+// console.log(bf[0]);
+
+
 /****************************************************************************************
  * The Buffer class is a global type for dealing with binary data directly. It can be constructed in a variety of ways:
  *
@@ -158,146 +299,44 @@
 // console.log(buf);
 
 
-/*******************************
- * function ArrayBuffer(length) {}
- @param {number} length
- @constructor
- ArrayBuffer is very similar to working with a normal array
+/*****************************************************************
+ * Writes <i><code>string</code></i> to the buffer at <i><code>offset</code></i> using the given encoding.
+ * If <i><code>buffer</code></i> did not contain enough space to fit the entire string, it will write a partial amount of the string.
+ * The method will not write partial characters.
+ *
+ * <pre><code>
+ *   buf = new Buffer(256);
+ *   len = buf.write('\u00bd + \u00bc = \u00be', 0);
+ *   console.log(len + " bytes: " + buf.toString('utf8', 0, len));
+ * </code></pre> The number of characters written (which may be different than the number of bytes written) is set in
+ * <i><code>Buffer._charsWritten</code></i> and will be overwritten the next time <i><code>buf.write()</code></i> is called.
+ *
+ * @param {String} string data to be written to buffer
+ * @param {Number?} [offset=0] start buffer position
+ * @param {Number?} [length=buffer.length-offset] the number of bytes to write
+ * @param {String?} [encoding='utf8'] data to be written to buffer
+ * @returns {Number} number of octets written
+ * Buffer.prototype.write = function(string, offset, length, encoding) {return 0;}
  */
-
-
-// var a = new ArrayBuffer(1);
-// a[0] = 'riaaa'
-// a[1] = 'riaaa'
-// a[2] = 'riaaa'
-//
-// console.log(a.byteLength,'aa',a);
-
-//a.push('aaa')//error
-
-/**
- * ArrayBuffer.prototype.slice = function(start(inclusive),[end(exclusive])) {};
- @default extraact one item
- @param {number} start
- @param {number} end
- @return {ArrayBuffer}
- usage:extract a new ArrayBuffer from an existing
- */
-
-// var foo = new ArrayBuffer(4);
-// foo[0] = 0;
-// foo[1] = 1;
-// foo[2] = 2;
-// foo[3] = 3;
-// console.log(foo.slice(2, 4));
-// console.log(foo.slice(2, foo.byteLength));
-// console.log(foo.slice(2));
-// console.log(foo.slice(-2));
-// console.log(foo);
-
-
-// var foo = new ArrayBuffer(4);
-// var bar;
-// foo[0] = 0;
-// foo[1] = 1;
-// foo[2] = 2;
-// foo[3] = 3;
-// // Create a copy of foo and modify it
-// bar = foo.slice(0);
-// bar[0] = 0xc;
-// console.log(foo);
-// console.log(bar);
+// var buf = new Buffer(9);
+// var data = "foo";
+// buf.write(data);
+// buf.write(data, 3);
+// buf.write(data, 6, data.length);
 
 
 /**
- * ArrayBuffer Views
+ * Writes <i><code>value</code></i> to the buffer at the specified offset with specified endian format. Note, behavior is unspecified if <i><code>value</code></i> is not a 64 bit double.
+ * Set noAssert to true to skip validation of value and offset. This means that value may be too large for the specific function and offset may be beyond the end of the buffer leading to the values being silently dropped. This should not be used unless you are certain of correctness. Defaults to false.
+ *
+ * @param {Number} value a 64 bit double
+ * @param {Number} offset buffer offset
+ * @param {Boolean?} [noAssert=false] true, if validation should be skipped
+ * Buffer.prototype.writeDoubleLE = function(value, offset, noAssert) {}
  */
-//
-// var buf = new ArrayBuffer(8);
-// var view = new Uint32Array(buf);
-// view[0] = 100;
-// view[1] = 10000000000;
-// console.log(view);
 
-
-// var buf = new ArrayBuffer(4);
-// var view1 = new Uint32Array(buf);
-// var view2 = new Uint8Array(buf);
-// // write to view1 and print the value
-// view1[0] = 0;
-// console.log("Uint32 = " + view1[0]);
-// // write to view2 and print view1's value
-// view2[1] = 2;
-//
-// console.log("Uint32 = " + view1[0]);
-//
-//
-
-
-// var arraybuffer = new ArrayBuffer(4);
-//
-// var aView = new Int8Array(arraybuffer);  //从0开始到内存末尾
-//
-// var bView = new Int8Array(arraybuffer,2); //从2开始到末尾
-//
-// aView[0] = 1;
-// aView[1] = 2;
-// aView[2] = 3;
-// aView[3] = 4;
-//
-// bView[0] = 9;
-// bView[1] = 8;
-//
-// console.log(aView[2] );      //return   9
-// console.log(aView[3] );      //return   8
-//
-// var view = new Int16Array([1,653,700,-90,88]);
-//
-// console.log(view);
-
-
-// var arraybuffer = new ArrayBuffer(32);
-//
-// var aView = new Int16Array(arraybuffer,0,4);    //占用0-7
-//
-// var bView = new Float32Array(arraybuffer,8,5);  //占用8-27
-//
-// var cView = new Uint8Array(arraybuffer,28,4)    //仅剩4个,报错Invalid typed array length
-
-
-// var arraybuffer = new ArrayBuffer(4);
-//
-// var aView = new Int8Array(arraybuffer);  //从0开始到内存末尾
-//
-// var bView = new Int16Array(arraybuffer,2); //从2开始到末尾
-//
-// aView[0] = 1;
-// aView[1] = 2;
-// aView[2] = 3;
-// aView[3] = 4;
-//
-// bView[0] = 500;
-// bView[1] = 8;
-//
-// console.log(aView[2] );      //return   -12
-// console.log(aView[3] );      //return   1
-// console.log(bView[1]);
-//
-
-
-// var buf = new ArrayBuffer(4);
-// var view1 = new Uint32Array(buf);
-// var view2 = new Uint8Array(buf);
-// view1[0] = 100;
-// console.log("Uint32 = " + view1[0]);//100
-// view2[1] = 1;
-    // console.log("Uint32 = " + view1[0]);//356 ,
-
-var bf = Buffer(1);
-
-console.log(bf[0]);
-
-
+// var buf = new Buffer(16);
+// buf.writeDoubleLE(3.14, 0, true);
 
 
 

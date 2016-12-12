@@ -125,12 +125,12 @@
  *'SIGINT' , 'SIGUSR1','SIGTERM'
  */
 
-var cp = require("child_process");
-var child = cp.spawn("cat");
-child.on("exit", function (code, signal) {
-    console.log("Killed using " + signal);
-});
-child.kill("SIGTERM");
+// var cp = require("child_process");
+// var child = cp.spawn("cat");
+// child.on("exit", function (code, signal) {
+//     console.log("Killed using " + signal);
+// });
+// child.kill("SIGTERM");
 
 
 /*********************************************************
@@ -138,14 +138,14 @@ child.kill("SIGTERM");
  *'SIGINT' , 'SIGUSR1','SIGTERM'
  */
 
-var cp = require("child_process");
-var child;
-child = cp.fork(__dirname + "/child", ["-foo"], {
-    cwd: "/",
-    env: {
-        bar: "baz"
-    }
-});
+// var cp = require("child_process");
+// var child;
+// child = cp.fork(__dirname + "/child", ["-foo"], {
+//     cwd: "/",
+//     env: {
+//         bar: "baz"
+//     }
+// });
 
 
 /*********************************************************
