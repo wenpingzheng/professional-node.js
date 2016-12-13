@@ -417,15 +417,15 @@
 /*************************************************
  * Typed Array Compatibility
  */
-var buf = new Buffer(4);
-var view;
-buf.fill(0);
-view = new Uint32Array(buf);
-console.log(buf);
-console.log(view);
-
-
-
-var view = new Uint32Array([257]);
-var buf = new Buffer(view);
-console.log(buf);
+// var buf = new Buffer(4);
+// var view;
+// buf.fill(0);
+// view = new Uint32Array(buf);
+// console.log(buf);
+// console.log(view);
+//
+//
+//
+// var view = new Uint32Array([257]);
+// var buf = new Buffer(view);
+// console.log(buf);
