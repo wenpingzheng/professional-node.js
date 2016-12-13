@@ -1,4 +1,3 @@
-
 /*******************************
  * function ArrayBuffer(length) {}
  @param {number} length
@@ -6,15 +5,32 @@
  ArrayBuffer is very similar to working with a normal array
  */
 
-
-// var a = new ArrayBuffer(1);
-// a[0] = 'riaaa'
+// var a = new ArrayBuffer(1);//number only
+// a[0] = 'riaaa' //property only
 // a[1] = 'riaaa'
 // a[2] = 'riaaa'
 //
-// console.log(a.byteLength,'aa',a);
-
+// console.log(a.byteLength,a);
 //a.push('aaa')//error
+
+// var foo = new ArrayBuffer(4);
+// foo[0] = 0;
+// foo[1] = 1;
+// foo[2] = 2;
+// foo[3] = 3;
+// foo[4] = 4;//property
+// console.log(foo);
+
+
+// var foo = new ArrayBuffer(4);
+// foo[0] = 10000;
+// foo[1] = 120022;
+// foo[2] = 29999;
+// foo[3] = 3;
+// for (var i = 0, len = foo.byteLength; i < len; i++) {
+//     console.log(foo[i]);
+// }
+
 
 /**
  * ArrayBuffer.prototype.slice = function(start(inclusive),[end(exclusive])) {};
@@ -43,7 +59,7 @@
 // foo[1] = 1;
 // foo[2] = 2;
 // foo[3] = 3;
-// // Create a copy of foo and modify it
+// // Create a copy of foo and modify it,it will not copy the modifty data
 // bar = foo.slice(0);
 // bar[0] = 0xc;
 // console.log(foo);
@@ -53,48 +69,37 @@
 /**
  * ArrayBuffer Views
  */
-//
-// var buf = new ArrayBuffer(8);
-// var view = new Uint32Array(buf);
-// view[0] = 100;
-// view[1] = 10000000000;
-// console.log(view);
 
+// var buf = new ArrayBuffer(3);
+// var view = new Uint8Array(buf);
+// view[0] = 'a';//number only
+// view[1] = 271;//1 0000 1111
+// console.log(view);//100,15
+
+/***
+ * share buffer issue:
+ *
+ @param bufferOrArrayOrLength
+ @param {number} [byteOffset]
+ @param {number} [length]
+ @constructor
+ function Int32Array(bufferOrArrayOrLength,byteOffset,length) {}
+ */
 
 // var buf = new ArrayBuffer(4);
 // var view1 = new Uint32Array(buf);
 // var view2 = new Uint8Array(buf);
-// // write to view1 and print the value
-// view1[0] = 0;
-// console.log("Uint32 = " + view1[0]);
-// // write to view2 and print view1's value
-// view2[1] = 2;
-//
-// console.log("Uint32 = " + view1[0]);
-//
-//
+// view1[0] = 100;
+// console.log("Uint32 = " + view1[0]);//100
+// view2[1] = 1;
+// console.log("Uint32 = " + view1[0]);//356
 
 
-// var arraybuffer = new ArrayBuffer(4);
-//
-// var aView = new Int8Array(arraybuffer);  //从0开始到内存末尾
-//
-// var bView = new Int8Array(arraybuffer,2); //从2开始到末尾
-//
-// aView[0] = 1;
-// aView[1] = 2;
-// aView[2] = 3;
-// aView[3] = 4;
-//
-// bView[0] = 9;
-// bView[1] = 8;
-//
-// console.log(aView[2] );      //return   9
-// console.log(aView[3] );      //return   8
-//
-// var view = new Int16Array([1,653,700,-90,88]);
-//
-// console.log(view);
+// var buf = new ArrayBuffer(5);
+// var view = new Int32Array(buf, 0, 1);
+// view[0] = 2560;
+// buf[4] = 5;
+// console.log(view,view[0]);
 
 
 // var arraybuffer = new ArrayBuffer(32);
@@ -126,20 +131,69 @@
 //
 
 
-// var buf = new ArrayBuffer(4);
-// var view1 = new Uint32Array(buf);
-// var view2 = new Uint8Array(buf);
-// view1[0] = 100;
-// console.log("Uint32 = " + view1[0]);//100
-// view2[1] = 1;
-    // console.log("Uint32 = " + view1[0]);//356 ,
+/*************************************
+ * Creating an Empty View
+ */
+// var view = new Int8Array(2);
+// view[0]= 1000;//
+// /**
+//  * http://www.99cankao.com/numbers/twos-complement.php
+//  * -24 = 1110 1000
+//  * 1000=0011 1110 1000
+//  * @type {number}
+//  */
+// console.log(view);//-24 0
 
-// var bf = Buffer(1);
-//
-// console.log(bf[0]);
+/********************************
+ * Creating a View from Data Values
+ */
+// var buf = new ArrayBuffer(4);
+// var view1 = new Int8Array(buf);
+// var view2 = new Uint32Array(view1);
+// console.log(buf.byteLength); // 4
+// console.log(view1.byteLength); // 4
+// console.log(view2.byteLength); // 16
+// // a 4-byte ArrayBuffer is used to create an Int8Array view containing four numbers.
+// // The Int8Array view is then used to create a new Uint32Array view. The Uint32Array also contains four numbers,
+// // corresponding to the data in the Int8Array view. However, its underlying ArrayBuffer is 16 bytes long instead of 4.
+
+/**********************************
+ * View Properties
+ */
+/***
+ * byteLength
+ */
+// var buf = new ArrayBuffer(10);
+// var view = new Int16Array(buf, 0, 2);
+// console.log(buf.byteLength);
+// console.log(view.byteLength);
+
+/***
+ * Length
+ */
+
+// var view = new Int32Array([5, 10]);
+// console.log(view.length);
+
+// var view = new Int32Array([5, 10]);
+// for (var i = 0, len = view.length; i < len; i++) {
+//     console.log(view[i]);
+// }
+
+
+/***
+ * byteOffset
+ * This value is always 0, unless an offset was passed in as the second argument to the constructor
+ */
+
+// var buf = new ArrayBuffer(10);
+// var view = new Int16Array(buf, 4, 2);
+// console.log(view.byteOffset);
 
 
 /****************************************************************************************
+ * Node Buffers
+ *
  * The Buffer class is a global type for dealing with binary data directly. It can be constructed in a variety of ways:
  *
  * <i><code>new Buffer(size)</code></i> - Allocates a new buffer of <i><code>size</i></code> octets.
@@ -161,6 +215,36 @@
 // var buffer = new Buffer("I'm a string!", "utf-8")
 // console.log(buffer);
 // console.log(String.fromCharCode(73/* 0x49=73 */));
+
+/**
+ * toString()
+ * @type {String}
+ */
+// var buf = new Buffer("foo");
+// console.log(buf.toString());
+
+/**
+ * toJSON()
+ * @type {String}
+ */
+
+// var buf = new Buffer("foo");
+// console.log(buf);
+// console.log(0x66);
+// console.log(buf.toJSON());
+// console.log(JSON.stringify(buf));
+
+
+/**
+ * @static
+ * @param {String} encoding The encoding string to test
+ * @returns {Boolean} true if the <i><code>encoding</code</i> is a valid encoding argument, or false otherwise.
+ * Buffer.isEncoding = function(encoding) {return true;}
+ */
+
+// console.log(Buffer.isEncoding("utf8"));
+// console.log(Buffer.isEncoding("foo"));
+
 
 /**
  * @static
@@ -188,6 +272,26 @@
 
 
 /**
+ * Fills the buffer with the specified value. If the <i><code>offset</code></i> and <i><code>end</code></i> are not given it will fill the entire buffer.
+ * <pre><code>
+ *   var b = new Buffer(50);
+ *   b.fill("h");
+ * </code></pre>
+ *
+ * @param {Number|String} value (if it's string, the first char code is used)
+ * @param {Number?} [offset=0] start buffer offset
+ * @param {Number?} [end=this.length] end buffer offset
+ Buffer.prototype.fill = function(value, offset, end) {}
+ */
+
+//  var buf = new Buffer(1024);
+// console.log(buf.toString());
+
+// var buf = new Buffer(1024);
+// buf.fill(0);
+
+
+/**
  * Writes <i><code>string</code></i> to the buffer at <i><code>offset</code></i> using the given encoding.
  * @param {String} string data to be written to buffer
  * @param {Number?} [offset=0] start buffer position
@@ -203,49 +307,70 @@
 // console.log(len + " bytes: " + buf.toString('utf8', 0, 2));
 // console.log(len + " bytes: " + buf.toString('utf8', 0, len));
 
+// var buf = new Buffer(9);
+// var data = "foo";
+// buf.write(data);
+// buf.write(data, 3);
+// buf.write(data, 6, data.length);
+// console.log(buf.length);
 
 /**
- * Fills the buffer with the specified value. If the <i><code>offset</code></i> and <i><code>end</code></i> are not given it will fill the entire buffer.
- * @param {Number|String} value (if it's string, the first char code is used)
- * @param {Number?} [offset=0] start buffer offset
- * @param {Number?} [end=this.length] end buffer offset
- * Buffer.prototype.fill = function(value, offset, end) {}
+ * writeDoubleLE
+ */
+/**
+ * writeDoubleLE <i><code>value</code></i> to the buffer at the specified offset with specified endian format. Note, behavior is unspecified if <i><code>value</code></i> is not a 64 bit double.
+ * Set noAssert to true to skip validation of value and offset. This means that value may be too large for the specific function and offset may be beyond the end of the buffer leading to the values being silently dropped. This should not be used unless you are certain of correctness. Defaults to false.
+ *
+ * @param {Number} value a 64 bit double
+ * @param {Number} offset buffer offset
+ * @param {Boolean?} [noAssert=false] true, if validation should be skipped
+ * Buffer.prototype.writeDoubleLE = function(value, offset, noAssert) {}
+ */
+// var buf = new Buffer(16);
+// buf.writeDoubleLE(1, 2, true);
+// console.log(buf);
+//
+// var buf = new Buffer(16);
+// buf.writeDoubleLE(1, 17, false);
+// console.log(buf);
+// var buf = new Buffer(16);
+// buf.writeDoubleLE(1, 17, true);
+// console.log(buf);
+
+
+/*****************************************************************
+ *Reading Numeric Data
  */
 
-// buf = new Buffer(256);
-// buf.fill(0);
-// len = buf.write('\u00bd + \u00bc = \u00be', 0);
-// console.log(len + " bytes: " + buf.toString());
-// console.log(len + " bytes: " + buf.toString('utf8'));
-// console.log(len + " bytes: " + buf.toString('utf8', 0, 2));
-// console.log(len + " bytes: " + buf.toString('utf8', 0, len));
-
-// var buf = new Buffer(8);
-// buf.fill(0)
-// buf.writeDoubleLE(3.14, 0,true);
-// var value = buf.readDoubleLE(0);
-// console.log(value,buf.toString());
+// var buf = new Buffer(32);
+// var value;
+// buf.writeDoubleLE(3.14, 1);
+// value = buf.readDoubleLE(0);
+// console.log(value);
 
 
 /**
  * Returns a new buffer which references the same memory as the old, but offset and cropped by the <i><code>start</code></i>
+ *
  * and <i><code>end</code</i> indexes. Negative indexes start from the end of the buffer.
  * <b>Modifying the new buffer slice will modify memory in the original buffer!</b>
  *
  * @param {Number?} [start=0]
  * @param {Number?} [end=this.length]
  * @returns {Buffer}
- * Buffer.prototype.slice = function(start, end) {}
+ * Buffer.prototype.slice = function(start, end) {return null}
+ *
+ * The slice() method returns a new Buffer that shares memory with the original Buffer. In other words, updates
+ to the new Buffer affect the original, and vice versa
  */
-// var buf1 = new Buffer(256);
-// buf1.fill(0)
-// var buf2 = buf1.slice();
+
+// var buf1 = new Buffer(4);
+// var buf2 = buf1.slice(0, 2);
 // console.log(buf2);
-// var buf3 = buf1.slice(250);
-// console.log(buf3);
 //
-// var buf4 = buf1.slice(250, 253);
-// console.log(buf4);
+// buf2[0] = 100;//shares meory
+// console.log(buf1[0],buf2[0]);//affect shares meory
+
 
 /**
  * Does copy between buffers. The source and target regions can be overlapped.
@@ -255,24 +380,14 @@
  * @param {Number?} [targetStart=0] start offset in <i><code>targetBuffer</code></i>
  * @param {Number?} [sourceStart=0] start offset in <i><code>this buffer</code></i>
  * @param {Number?} [sourceEnd=this.length] end offset in <i><code>this buffer</code></i>
- * Buffer.prototype.copy = function(targetBuffer, targetStart, sourceStart, sourceEnd) {}
- */
-//
-// var buf1 = new Buffer(20);
-// var buf2 = new Buffer(18);
-// var buf3 = new Buffer(18);
-// buf1.copy(buf2);
-// console.log(buf2);
-//
-// buf1.copy(buf3,8);
-// console.log(buf3);
 
+ Buffer.prototype.copy = function(targetBuffer, targetStart, sourceStart, sourceEnd) {}
+ */
 
 // var buf1 = new Buffer([1, 2, 3, 4]);
 // var buf2 = new Buffer(4);
 // buf1.copy(buf2, 0, 0, buf1.length);
-//
-// console.log(buf2);
+
 
 /**
  * Returns a buffer which is the result of concatenating all the buffers in the list together.
@@ -285,58 +400,32 @@
  * @param {Array} list List of Buffer objects to concat
  * @param {Number?} totalLength Total length of the buffers when concatenated
  * @returns {Buffer}
- * Buffer.concat = function(list, totalLength) {}
+
+ Buffer.concat = function(list, totalLength) {
+    return null;
+};
  */
+
 
 // var buf1 = new Buffer([1, 2]);
 // var buf2 = new Buffer([3, 4]);
 // var buf = Buffer.concat([buf1, buf2]);
-// console.log(buf);
-
-// var buf1 = new Buffer([1, 2]);
-// var buf2 = new Buffer([3, 4]);
-// var buf = Buffer.concat([buf1, buf2],3);
-// console.log(buf);
+//
+// console.log(buf[3]);
 
 
-/*****************************************************************
- * Writes <i><code>string</code></i> to the buffer at <i><code>offset</code></i> using the given encoding.
- * If <i><code>buffer</code></i> did not contain enough space to fit the entire string, it will write a partial amount of the string.
- * The method will not write partial characters.
- *
- * <pre><code>
- *   buf = new Buffer(256);
- *   len = buf.write('\u00bd + \u00bc = \u00be', 0);
- *   console.log(len + " bytes: " + buf.toString('utf8', 0, len));
- * </code></pre> The number of characters written (which may be different than the number of bytes written) is set in
- * <i><code>Buffer._charsWritten</code></i> and will be overwritten the next time <i><code>buf.write()</code></i> is called.
- *
- * @param {String} string data to be written to buffer
- * @param {Number?} [offset=0] start buffer position
- * @param {Number?} [length=buffer.length-offset] the number of bytes to write
- * @param {String?} [encoding='utf8'] data to be written to buffer
- * @returns {Number} number of octets written
- * Buffer.prototype.write = function(string, offset, length, encoding) {return 0;}
+/*************************************************
+ * Typed Array Compatibility
  */
-// var buf = new Buffer(9);
-// var data = "foo";
-// buf.write(data);
-// buf.write(data, 3);
-// buf.write(data, 6, data.length);
-
-
-/**
- * Writes <i><code>value</code></i> to the buffer at the specified offset with specified endian format. Note, behavior is unspecified if <i><code>value</code></i> is not a 64 bit double.
- * Set noAssert to true to skip validation of value and offset. This means that value may be too large for the specific function and offset may be beyond the end of the buffer leading to the values being silently dropped. This should not be used unless you are certain of correctness. Defaults to false.
- *
- * @param {Number} value a 64 bit double
- * @param {Number} offset buffer offset
- * @param {Boolean?} [noAssert=false] true, if validation should be skipped
- * Buffer.prototype.writeDoubleLE = function(value, offset, noAssert) {}
- */
-
-// var buf = new Buffer(16);
-// buf.writeDoubleLE(3.14, 0, true);
+var buf = new Buffer(4);
+var view;
+buf.fill(0);
+view = new Uint32Array(buf);
+console.log(buf);
+console.log(view);
 
 
 
+var view = new Uint32Array([257]);
+var buf = new Buffer(view);
+console.log(buf);

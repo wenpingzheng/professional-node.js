@@ -16,7 +16,7 @@ one places hex = 8 places binary
 one places octa = 4 places binary
 
 ##ArrayBuffer Views
-http://www.javascripture.com/ArrayBuffer
+
 ![](arraybufferviews.png)
  
 ![](bufferviews.png)
