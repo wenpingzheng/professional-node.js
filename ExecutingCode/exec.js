@@ -164,6 +164,110 @@ process.on("message", function(message) {
 });
 
 
+/***********************************************************
+ * The vm Module
+ * like=>eval()
+ */
+
+/***************************
+ *
+ * vm.runInThisContext
+ * @static
+ * @param code {string}
+ * @param filename? {string}
+ */
+
+/**
+ * same context as  application
+ */
+// var vm = require("vm");
+// var code = "console.log(foo);";
+// foo = "Hello vm";
+// vm.runInThisContext(code);
+
+/**
+ * Updating a Global Variable;
+ */
+// var vm = require("vm");
+// var code = "console.log(foo); foo = 'Goodbye' //Updating a Global Variable;";
+// foo = "Hello vm";
+// vm.runInThisContext(code);
+// console.log(foo);
+
+/**
+ * Attempting to Access a Nonglobal Variable
+  */
+// var vm = require("vm");
+// var foo = "Hello vm";
+// var code = "console.log(foo);";
+// vm.runInThisContext(code,'/Users/richard.g/Documents/workspaces/github-richardgong1987/professional-node.js/ExecutingCode/exec.js');//error
+//
+
+/**
+ * Successfully Accessing a Local Variable Using eval()
+ */
+// var code = "console.log(foo);";
+// var foo = "Hello eval";
+// eval(code);
+
+
+
+/***************************
+ *
+ * vm.runInNewContext(code, [sandbox], [filename])
+ * @static
+ * @param code {string}
+ * @param filename? {string}
+ */
+
+
+/**
+ *Attempting to Execute Code
+ */
+// var vm = require("vm");
+// var code = "console.log(foo);";
+// foo = "Hello vm";
+// vm.runInNewContext(code);
+
+
+/**
+ * A Successful with sanbox
+ * sanbox => with-like  => with(obj){}
+ */
+
+// var vm = require("vm");
+// var code = "console.log(foo);";
+// var sandbox;
+// foo = "Hello vm";
+// sandbox = {
+//     console: console,
+//     foo: foo
+// };
+// vm.runInNewContext(code, sandbox);
+
+
+// var vm = require("vm");
+// var code = "var bar = 1; console.log(foo); foo = 'Goodbye'";
+// var sandbox;
+// foo = "Hello vm";
+// sandbox = {
+//     console: console,
+//     foo: foo
+// };
+// vm.runInNewContext(code, sandbox);
+// console.log(foo);
+// console.log(sandbox.foo);
+// console.log(sandbox.bar);
+
+
+/***************************
+ *
+ * vm.runInNewContext(code, [sandbox], [filename])
+ * @static
+ * @param code {string}
+ * @param filename? {string}
+ */
+
 
 
 
