@@ -5,32 +5,12 @@
  ArrayBuffer is very similar to working with a normal array
  */
 
-// var a = new ArrayBuffer(1);//number only
-// a[0] = 'riaaa' //property only
-// a[1] = 'riaaa'
-// a[2] = 'riaaa'
-//
-// console.log(a.byteLength,a);
+var a = new ArrayBuffer(1);//number only
+a[0] = 'riaaa' //property only
+a[1] = 'riaaa'
+a[2] = 'riaaa'
+
 //a.push('aaa')//error
-
-// var foo = new ArrayBuffer(4);
-// foo[0] = 0;
-// foo[1] = 1;
-// foo[2] = 2;
-// foo[3] = 3;
-// foo[4] = 4;//property
-// console.log(foo);
-
-
-// var foo = new ArrayBuffer(4);
-// foo[0] = 10000;
-// foo[1] = 120022;
-// foo[2] = 29999;
-// foo[3] = 3;
-// for (var i = 0, len = foo.byteLength; i < len; i++) {
-//     console.log(foo[i]);
-// }
-
 
 /**
  * ArrayBuffer.prototype.slice = function(start(inclusive),[end(exclusive])) {};
@@ -46,11 +26,13 @@
 // foo[1] = 1;
 // foo[2] = 2;
 // foo[3] = 3;
-// console.log(foo.slice(2, 4));
+// var foo1 = foo.slice(0);
+// console.log(foo);
+// console.log(foo1);
+//console.log(foo.slice(2, 4));
 // console.log(foo.slice(2, foo.byteLength));
 // console.log(foo.slice(2));
-// console.log(foo.slice(-2));
-// console.log(foo);
+//console.log(foo.slice(-2));
 
 
 // var foo = new ArrayBuffer(4);
@@ -66,13 +48,31 @@
 // console.log(bar);
 
 
+
+
+// var foo = new ArrayBuffer(4);
+// foo[0] = 0;
+// foo[1] = 1;
+// foo[2] = 2;
+// foo[3] = 3;
+// var foo1 = foo.slice(0);
+//
+// //e.g:not shares memory
+// console.log(foo1);
+// var view1 = new Int8Array(foo);
+// view1[0] = 50;
+// var view2 = new Int8Array(foo1);//not shares buffer
+// console.log(view1[0], view2[0]);
+
+
+
 /**
  * ArrayBuffer Views
  */
 
 // var buf = new ArrayBuffer(3);
 // var view = new Uint8Array(buf);
-// view[0] = 'a';//number only
+// view[0] = '10';//number only
 // view[1] = 271;//1 0000 1111
 // console.log(view);//100,15
 
@@ -90,9 +90,9 @@
 // var view1 = new Uint32Array(buf);
 // var view2 = new Uint8Array(buf);
 // view1[0] = 100;
-// console.log("Uint32 = " + view1[0]);//100
+// console.log(view1[0]);//100
 // view2[1] = 1;
-// console.log("Uint32 = " + view1[0]);//356
+// console.log(view1[0]);//356
 
 
 // var buf = new ArrayBuffer(5);
@@ -102,9 +102,9 @@
 // console.log(view,view[0]);
 
 
-// var arraybuffer = new ArrayBuffer(32);
+// var arraybuffer = new ArrayBuffer(30);
 //
-// var aView = new Int16Array(arraybuffer,0,4);    //占用0-7
+// var aView = new Int16Array(arraybuffer,0,4);    //占用0-7  8
 //
 // var bView = new Float32Array(arraybuffer,8,5);  //占用8-27
 //
@@ -134,15 +134,17 @@
 /*************************************
  * Creating an Empty View
  */
+
 // var view = new Int8Array(2);
-// view[0]= 1000;//
-// /**
-//  * http://www.99cankao.com/numbers/twos-complement.php
-//  * -24 = 1110 1000
-//  * 1000=0011 1110 1000
-//  * @type {number}
-//  */
-// console.log(view);//-24 0
+// view[0]= 1000;
+
+/**
+ * http://www.99cankao.com/numbers/twos-complement.php
+ * -24 = 1110 1000
+ * 1000=0011 1110 1000
+ * @type {number}
+ */
+//console.log(view);//-24 0
 
 /********************************
  * Creating a View from Data Values
@@ -151,11 +153,11 @@
 // var view1 = new Int8Array(buf);
 // var view2 = new Uint32Array(view1);
 // console.log(buf.byteLength); // 4
-// console.log(view1.byteLength); // 4
-// console.log(view2.byteLength); // 16
-// // a 4-byte ArrayBuffer is used to create an Int8Array view containing four numbers.
-// // The Int8Array view is then used to create a new Uint32Array view. The Uint32Array also contains four numbers,
-// // corresponding to the data in the Int8Array view. However, its underlying ArrayBuffer is 16 bytes long instead of 4.
+// console.log(view1.byteLength,view1); // 4
+// console.log(view2.byteLength,view2); // 16
+// a 4-byte ArrayBuffer is used to create an Int8Array view containing four numbers.
+// The Int8Array view is then used to create a new Uint32Array view. The Uint32Array also contains four numbers,
+// corresponding to the data in the Int8Array view. However, its underlying ArrayBuffer is 16 bytes long instead of 4.
 
 /**********************************
  * View Properties
@@ -174,7 +176,7 @@
 
 // var view = new Int32Array([5, 10]);
 // console.log(view.length);
-
+//
 // var view = new Int32Array([5, 10]);
 // for (var i = 0, len = view.length; i < len; i++) {
 //     console.log(view[i]);
@@ -187,7 +189,7 @@
  */
 
 // var buf = new ArrayBuffer(10);
-// var view = new Int16Array(buf, 4, 2);
+// var view = new Int16Array(buf, 6, 2);
 // console.log(view.byteOffset);
 
 
@@ -208,18 +210,19 @@
  * @param {String?} encoding encoding to use if the first parameter type is string
  */
 //var bu = new Buffer();//error
-// var buffer = new Buffer(8);
+// var buffer = new Buffer(100);
 // console.log(buffer.toString());
-// var buffer = new Buffer([8, 6, 7, 5, 3, 0, 9]);
+// var buffer = new Buffer([15, 6, 7, 5, 3, 0, 9]);
 // console.log(buffer);
 // var buffer = new Buffer("I'm a string!", "utf-8")
 // console.log(buffer);
-// console.log(String.fromCharCode(73/* 0x49=73 */));
+//console.log(String.fromCharCode(73/* 0x49=73 */));
 
 /**
  * toString()
  * @type {String}
  */
+
 // var buf = new Buffer("foo");
 // console.log(buf.toString());
 
@@ -269,7 +272,7 @@
 // var length = (new Buffer("foo")).length;
 // console.log(byteLength);
 // console.log(length);
-
+//
 
 /**
  * Fills the buffer with the specified value. If the <i><code>offset</code></i> and <i><code>end</code></i> are not given it will fill the entire buffer.
@@ -288,8 +291,8 @@
 // console.log(buf.toString());
 
 // var buf = new Buffer(1024);
-// buf.fill(0);
-
+// buf.fill('ra');
+// console.log(buf.toString());
 
 /**
  * Writes <i><code>string</code></i> to the buffer at <i><code>offset</code></i> using the given encoding.
@@ -329,7 +332,7 @@
 // var buf = new Buffer(16);
 // buf.writeDoubleLE(1, 2, true);
 // console.log(buf);
-//
+
 // var buf = new Buffer(16);
 // buf.writeDoubleLE(1, 17, false);
 // console.log(buf);
@@ -341,11 +344,11 @@
 /*****************************************************************
  *Reading Numeric Data
  */
-
+//
 // var buf = new Buffer(32);
 // var value;
 // buf.writeDoubleLE(3.14, 1);
-// value = buf.readDoubleLE(0);
+// value = buf.readDoubleLE(1);
 // console.log(value);
 
 
@@ -368,7 +371,7 @@
 // var buf2 = buf1.slice(0, 2);
 // console.log(buf2);
 //
-// buf2[0] = 100;//shares meory
+// buf2[0] = 100;//shares memory
 // console.log(buf1[0],buf2[0]);//affect shares meory
 
 
@@ -387,6 +390,9 @@
 // var buf1 = new Buffer([1, 2, 3, 4]);
 // var buf2 = new Buffer(4);
 // buf1.copy(buf2, 0, 0, buf1.length);
+// console.log(buf2);
+// //buf1 | buf2
+
 
 
 /**
@@ -406,26 +412,29 @@
 };
  */
 
-
 // var buf1 = new Buffer([1, 2]);
 // var buf2 = new Buffer([3, 4]);
 // var buf = Buffer.concat([buf1, buf2]);
-//
+//console.log(buf);
+// buf[0] = 55;
+// console.log(buf1[0]);
 // console.log(buf[3]);
 
 
 /*************************************************
  * Typed Array Compatibility
  */
+
 // var buf = new Buffer(4);
 // var view;
 // buf.fill(0);
 // view = new Uint32Array(buf);
 // console.log(buf);
 // console.log(view);
-//
-//
-//
+
+
 // var view = new Uint32Array([257]);
 // var buf = new Buffer(view);
 // console.log(buf);
+
+
