@@ -1,6 +1,9 @@
 /******************
- * child_process.exec(command,[options],callback);
+ * child_process.exec(command,[object(env)],[callback]);
+ * launch a child process.invoked, a new shell
  */
+
+//1.command with argumens
 // var cp = require("child_process");
 // cp.exec("ls -l /", function(error, stdout, stderr) {
 //     if (error) {
@@ -11,7 +14,7 @@
 //         console.log(stdout);
 //     }
 // });
-
+//2.with options
 // cp.exec("ls -l", {
 //     cwd: "/"
 // }, function(error, stdout, stderr) {
@@ -26,8 +29,9 @@
 
 /******************
  * child_process.execFile(command(not arguments),[options array],[options Object],callback)
+ * not spawn a new shell.
  */
-
+//1.error
 // var cp = require("child_process");
 // cp.execFile("ls -al", function(error, stdout, stderr) {
 //     if (error) {
@@ -39,7 +43,7 @@
 //     }
 // });
 
-
+//2. with options
 // var cp = require("child_process");
 // cp.execFile("ls", ["-la", "/"], function(error, stdout, stderr) {
 //     if (error) {
