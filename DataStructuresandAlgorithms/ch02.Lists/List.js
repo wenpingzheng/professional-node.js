@@ -1,5 +1,3 @@
-'use strict'
-
 class List {
     constructor() {
         this.listSize = 0;
@@ -98,17 +96,17 @@ class List {
 }
 
 
-
 //1. remove data
 // var names = new List();
 // names.append(1);
 // names.append(2);
 // names.append(3);
+//
 // console.log(names.toString());
 // names.remove(3);
 // console.log(names.toString());
 
-// //2.get front data
+//2.get front data
 // var names = new List();
 // names.append("Clayton");
 // names.append("Raymond");
@@ -116,10 +114,10 @@ class List {
 // names.append("Jennifer");
 // names.append("Bryan");
 // names.append("Danny");
-//
-// names.front();
+// //
+//  names.front();
 // console.log(names.getElement());
-//
+
 // //3.next
 // names.next();
 // console.log(names.getElement());
@@ -154,6 +152,7 @@ class List {
 // names.append("Jennifer");
 // names.append("Bryan");
 // names.append("Danny");
+//
 //
 // for(names.end(); names.currPos() >= 0; names.prev()) {
 //     console.log(names.getElement());

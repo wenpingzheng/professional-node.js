@@ -31,12 +31,14 @@ class Stack {
 }
 
 var print = console.log;
-
+//
 // var s = new Stack();
 // s.push("David");
 // s.push("Raymond");
 // s.push("Bryan");
+//
 // print("length: " + s.length());
+//
 // print(s.peek());
 // var popped = s.pop();
 // print("The popped element is: " + popped);
@@ -48,6 +50,7 @@ var print = console.log;
 // print(s.peek());
 // s.push("Clayton");
 // print(s.peek());
+//
 
 //======================================================================================================================================================
 
@@ -63,7 +66,6 @@ var print = console.log;
 //     }
 //     return converted;
 // }
-//
 //
 // var num = 2;
 // var base = 2;
