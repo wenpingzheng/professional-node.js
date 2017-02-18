@@ -1,4 +1,4 @@
-#命令行
+#DOS命令行
 
 ##1. dir  == directory
 
@@ -32,7 +32,22 @@ cd..退回到上一级目录。
 
 
 
-##3. mkdir
+##3. mkdir = make directory
+
+
+##4. del
+ 
+del 文件名：删除一个文件(不是文件夹,是文件)。
+ 
+ ##5. rename
+ 
+ rename 重命名
+ 
+ 
+  
+   
+
+
 
 
 
