@@ -7,3 +7,14 @@
 
 ##remove "bacon" item
 ![](linkedlist-bacon.png)
+
+
+##2.Doubly Linked Lists
+
+![](doubly-linked-list.png)
+
+Removing a node from a doubly linked list
+
+
+![](removedoubly-list.png)
+
