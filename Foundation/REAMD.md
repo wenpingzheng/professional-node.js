@@ -45,6 +45,15 @@ del 文件名：删除一个文件(不是文件夹,是文件)。
  
  
   
+ #常用包
+ 
+ ##1.nodemon 用于自动执行node脚本
+ ```angular2html
+npm install nodemon -g 
+```
+
+
+
    
 
 
