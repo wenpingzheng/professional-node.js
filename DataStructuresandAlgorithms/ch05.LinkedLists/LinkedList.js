@@ -139,6 +139,7 @@ class LinkedList {
         var newNode = new Node(newElement);
         var current = this.find(item);
         newNode.next = current.next;
+        newNode.previous = current;
         current.next = newNode;
 
     }
