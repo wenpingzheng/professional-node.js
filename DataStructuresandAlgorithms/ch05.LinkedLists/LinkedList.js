@@ -17,7 +17,7 @@ class LinkedList {
     }
 
     dispReverse() {
-        var currNode = this.head;
+        let currNode = this.head;
         currNode = this.findLast();
         while (!(currNode.previous == null)) {
             console.log(currNode.element);
@@ -77,6 +77,26 @@ class LinkedList {
     }
 }
 
+// /**
+//  * 1.Insert item
+//  * @type {LinkedList}
+//  */
+// var cities = new LinkedList();
+// cities.insert("Conway", "head");
+// cities.insert("Russellville", "Conway");
+// cities.insert("Carlisle", "Russellville");
+// cities.insert("Alma", "Carlisle");
+// cities.display();
+//
+//
+// /**
+//  * 2. remove item
+//  */
+// console.log();
+// cities.remove("Carlisle");
+// cities.display();
+//
+
 
 var cities = new LinkedList();
 cities.insert("Conway", "head");
@@ -84,6 +104,9 @@ cities.insert("Russellville", "Conway");
 cities.insert("Carlisle", "Russellville");
 cities.insert("Alma", "Carlisle");
 cities.display();
-console.log();
+console.log('**********************************');
 cities.remove("Carlisle");
 cities.display();
+console.log('**********************************');
+cities.dispReverse();
+

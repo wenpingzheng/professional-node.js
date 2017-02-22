@@ -18,3 +18,8 @@ Removing a node from a doubly linked list
 
 ![](removedoubly-list.png)
 
+##3.Circularly Linked Lists
+
+![](circularly.png)
+
+
