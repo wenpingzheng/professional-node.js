@@ -97,16 +97,50 @@ class LinkedList {
 // cities.display();
 //
 
+//
+// var cities = new LinkedList();
+// cities.insert("Conway", "head");
+// cities.insert("Russellville", "Conway");
+// cities.insert("Carlisle", "Russellville");
+// cities.insert("Alma", "Carlisle");
+// cities.display();
+// console.log('**********************************');
+// cities.remove("Carlisle");
+// cities.display();
+// console.log('**********************************');
+// cities.dispReverse();
+//
 
-var cities = new LinkedList();
-cities.insert("Conway", "head");
-cities.insert("Russellville", "Conway");
-cities.insert("Carlisle", "Russellville");
-cities.insert("Alma", "Carlisle");
-cities.display();
-console.log('**********************************');
-cities.remove("Carlisle");
-cities.display();
-console.log('**********************************');
-cities.dispReverse();
+
+class Node {
+    constructor(element) {
+        this.element = element;
+        this.next = null;
+        this.previous = null;
+    }
+}
+
+
+class LinkedList {
+    constructor() {
+        this.head = new Node("head");
+
+    }
+
+    find(item) {
+        var currNode = this.head;
+        while (currNode.element != item) {
+            currNode = currNode.next;
+        }
+        return currNode;
+    }
+
+    insert(newElement, item) {
+        var newNode = new Node(newElement);
+        var current = this.find(item);
+        newNode.next = current.next;
+        current.next = newNode;
+
+    }
+}
 
