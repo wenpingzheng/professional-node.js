@@ -13,7 +13,7 @@ class Node {
 class LinkedList {
     constructor() {
         this.head = new Node("head");
-
+        this.head.next = this.head;
     }
 
     dispReverse() {
@@ -124,7 +124,7 @@ class Node {
 class LinkedList {
     constructor() {
         this.head = new Node("head");
-
+        this.head.next = this.head;
     }
 
     find(item) {
