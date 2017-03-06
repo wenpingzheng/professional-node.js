@@ -4,7 +4,10 @@
   "description": "##主讲人:止水",
   "main": "executelinkfile.js",
   "dependencies": {
-    "koa": "^1.2.4"
+    "colorprint": "^4.1.0",
+    "koa": "^1.2.4",
+    "koa-route": "^3.2.0",
+    "serve-index": "^1.8.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -23,5 +26,8 @@
     "url": "https://github.com/richardgong1987/professional-node.js/issues"
   },
   "homepage": "https://github.com/richardgong1987/professional-node.js#readme",
-  "optionalDependencies": {}
+  "optionalDependencies": {},
+  "directories": {
+    "test": "test"
+  }
 }
